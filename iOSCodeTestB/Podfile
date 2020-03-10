@@ -1,0 +1,13 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+target 'iOSCodeTestB' do
+
+  use_frameworks!
+  pod 'Alamofire', '5.0.2'
+
+end
+
+target 'iOSCodeTestBTests' do
+	inherit! :search_paths
+end
