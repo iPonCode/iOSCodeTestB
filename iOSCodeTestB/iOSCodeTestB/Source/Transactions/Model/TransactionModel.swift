@@ -7,7 +7,36 @@
 
 import Foundation
 
-// TODO: struct Codable to parse data received from webservice json
+// MARK: - Transaction
+
+// TODO: init from decoder trying to get:
+//       - id as Int
+//       - only dates well formated as Date
+//       - amount, fee as Double
+//       - description as String
+
+/**
+ "id":1442,
+ "date":"2018-07-24T18:10:10.000Z",
+ "amount":-113.86,
+ "description":""
+ */
+
+typealias Transactions = [Transaction]
+
+struct Transaction: Codable {
+    let id: Int
+    let date: String
+    let amount: Double
+    let fee: Double?
+    let description: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, date, amount, fee, description
+    }
+}
+
+
 
 /** JSON FROM URL: https://api.myjson.com/bins/1a30k8
 
