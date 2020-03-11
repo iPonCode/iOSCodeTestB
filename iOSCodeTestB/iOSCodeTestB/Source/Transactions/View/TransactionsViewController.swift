@@ -16,13 +16,20 @@ class TransactionsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: TransactionsViewModel = TransactionsViewModelImpl()
-    // TODO: var with binded array data, also pending make model
+    var transactions: Transactions = Transactions() // this will be binded
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: configure view, binding and lauch viewmodel method to webservice
         configureView()
+        bindViewModel()
         retrieveTransactions()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { // Wait a little bit for async webservice response
+            debugPrint("viewDidload+1.5 - Dump viewController data stored:")
+            dump(self.transactions)
+        }
+
     }
     
     func configureView() {
@@ -35,6 +42,19 @@ class TransactionsViewController: UIViewController {
         // TODO: Configure navigation button
         
         title = "Consultando transacciones.."
+    }
+    
+    func bindViewModel() {
+        
+        // Start Listening
+        viewModel.transactions.bind({ [weak self] (result) in
+            guard let result = result else {
+                return
+            }
+            // This will occur when viewmodel var update itself
+            self?.transactions = result
+            self?.tableView.reloadData()
+        })
     }
     
     func retrieveTransactions() {
@@ -89,6 +109,7 @@ extension TransactionsViewController: UITableViewDelegate {
         // TODO: push to a detailed view
         //tableView.deselectRow(at: indexPath, animated: true)
     }
+    
 }
 
 // MARK: - Methods of UISearchBarDelegate
@@ -106,5 +127,5 @@ extension TransactionsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // TODO: call ViewModel method width text to filter data
      }
-    
+
 }

@@ -10,7 +10,8 @@ import Alamofire
 
 protocol TransactionsViewModel {
     
-    // TODO: Create and Observable var that data that will be binded
+    var transactions: Observable<Transactions> {get}
+
     // TODO: Declare the methods will need use from viewcontroller like retrieve data or filter text
     func retrieveTransactions()
 }
@@ -19,7 +20,8 @@ protocol TransactionsViewModel {
 class TransactionsViewModelImpl: TransactionsViewModel {
     
     // TODO: Initialize the Observable data var
-    
+    var transactions = Observable<Transactions>([], thread: .main)
+
     // TODO: Declare private var to store the filterText in seachBar with a didSet than updateData
     
     // TODO: Webservice call
@@ -35,9 +37,9 @@ class TransactionsViewModelImpl: TransactionsViewModel {
                 return
             }
             
-            debugPrint("retrieveTransactions - Dump server response:")
-            dump(transactions)
-            // TODO: Save data from received from webservice to self?.transaction
+            self?.transactions.value = transactions
+            //debugPrint("retrieveTransactions - Dump viewModel data stored:")
+            //dump(self?.transactions.value)
             // TODO: filter, short, etc..
         }
         
