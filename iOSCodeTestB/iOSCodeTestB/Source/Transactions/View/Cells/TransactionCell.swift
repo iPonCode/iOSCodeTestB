@@ -8,17 +8,19 @@
 import UIKit
 
 protocol TransactionCell {
-    func configure() // TODO: Pass field values
+    func configure(id: String) // TODO: Pass field values
 }
 
 class TransactionCellImpl: UITableViewCell, TransactionCell {
     
+    @IBOutlet weak var label: UILabel!
     // This occurs when the xib is ready
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure() {
+    func configure(id: String) {
         // TODO: Set cell fields
+        label.text = id
     }
 }

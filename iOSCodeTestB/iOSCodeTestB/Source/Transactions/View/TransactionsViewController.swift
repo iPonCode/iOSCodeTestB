@@ -29,7 +29,7 @@ class TransactionsViewController: UIViewController {
             debugPrint("viewDidload+1.5 - Dump viewController data stored:")
             dump(self.transactions)
         }
-
+    
     }
     
     func configureView() {
@@ -54,11 +54,16 @@ class TransactionsViewController: UIViewController {
             // This will occur when viewmodel var update itself
             self?.transactions = result
             self?.tableView.reloadData()
+            self?.updateTitle()
         })
     }
     
     func retrieveTransactions() {
         viewModel.retrieveTransactions()
+    }
+
+    func updateTitle() {
+        title = String(format: "%d Transacciones", transactions.count)
     }
 
 }
@@ -76,7 +81,7 @@ extension TransactionsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15 // provisional value, this will be count of data array (binded)
+        return transactions.count // provisional value 15, this will be count of data array (binded)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,7 +89,8 @@ extension TransactionsViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: TransactionsViewController.TransactionCellIdAndNibName, for: indexPath) as? TransactionCellImpl {
             
             // TODO: load info in data array at indexPath.row and configure cell
-            cell.configure()
+            let transaction = transactions[indexPath.row]
+            cell.configure(id: String(transaction.amount))
             
             // TODO: protocol for cell actions, maybe needed to check/unceck certain cell options,
             //       like mark as favourite or similar
