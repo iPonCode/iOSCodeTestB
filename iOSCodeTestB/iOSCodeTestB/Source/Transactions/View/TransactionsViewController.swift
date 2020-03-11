@@ -22,6 +22,7 @@ class TransactionsViewController: UIViewController {
         super.viewDidLoad()
         // TODO: configure view, binding and lauch viewmodel method to webservice
         configureView()
+        retrieveTransactions()
     }
     
     func configureView() {
@@ -34,6 +35,10 @@ class TransactionsViewController: UIViewController {
         // TODO: Configure navigation button
         
         title = "Consultando transacciones.."
+    }
+    
+    func retrieveTransactions() {
+        viewModel.retrieveTransactions()
     }
 
 }
