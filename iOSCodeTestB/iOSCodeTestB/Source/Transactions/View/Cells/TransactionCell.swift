@@ -8,45 +8,33 @@
 import UIKit
 
 protocol TransactionCell {
-    func configure(id: String) // TODO: Pass field values
+    func configure(id: Int, date: String, amount: Double, fee: Double?, description: String?)
 }
 
 class TransactionCellImpl: UITableViewCell, TransactionCell {
     
     @IBOutlet weak var descripitonLabel: UILabel!
-    @IBOutlet weak var totalView: UIView!
+    @IBOutlet weak var euroView: UIView!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var feeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var stackFee: UIStackView!
     @IBOutlet weak var stackFeeWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topSeparator: UIView!
+    @IBOutlet weak var leftSeparator: UIView!
     
     // This occurs when the xib is ready
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func configure(id: String) {
+    func configure(id: Int, date: String, amount: Double, fee: Double?, description: String?) {
         
-        // TODO: Set cell fields
         // TODO: Configure logic to hide/show stackFee and update totalView color depending amount sign
         
-        descripitonLabel.text = id.isEmpty ? setDefaultDescription() : id
-
-        let randomDouble = Double.random(in: -999.9 ..< 999.0)
-        totalLabel.text = String(format: "%.2f", randomDouble)
-        
-        let randomDoubleA = Double.random(in: -999.9 ..< 999.0)
-        amountLabel.text = String(format: "%.2f", randomDoubleA)
-        
-        let randomDoubleF = Double.random(in: -99.9 ..< -0.01)
-        feeLabel.text = String(format: "%.2f", randomDoubleF)
-        
-        let width:CGFloat = totalView.bounds.width
-        totalView.layer.masksToBounds = true
-        totalView.layer.cornerRadius = width/3
+        let width:CGFloat = euroView.bounds.width
+        euroView.layer.masksToBounds = true
+        euroView.layer.cornerRadius = width/3
 
         feeLabel.layer.masksToBounds = true
         feeLabel.layer.cornerRadius = 4
@@ -55,44 +43,55 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
         totalLabel.layer.cornerRadius = 6
         totalLabel.backgroundColor = UIColor.bgTotalColor
 
-        Bool.random() ? setIncomeColor() : setExpenseColor()
+        fee != nil ? hasFee(true) : hasFee(false)
+        amount < 0.0 ? setExpenseColor() : setIncomeColor()
         
-        hasFee(Bool.random())
+        // Set cell info
+        dateLabel.text = date
+        amountLabel.text = String(amount)
+        feeLabel.text = String(fee ?? 0.0)
+        totalLabel.text = String(format:"%.2f", amount + (fee ?? 0.0))
         
-        topSeparator.alpha = 0.15
-
+        descripitonLabel.text = setDescription(description)
+        
     }
     
     private func hasFee(_ has: Bool) {
         if has {
-            stackFeeWidthConstraint.constant = 0.0
-        } else {
             stackFeeWidthConstraint.constant = 100.0
             feeLabel.backgroundColor = UIColor.bgStackFeeColor
+        } else {
+            stackFeeWidthConstraint.constant = 0.0
         }
+    }
+    
+    private func setDescription(_ text: String?) -> String {
         
+        if let description = text {
+            if !description.isEmpty {
+                descripitonLabel.textColor = .label
+                descripitonLabel.alpha = 1.0
+                return description
+            } else {
+                descripitonLabel.textColor = .secondaryLabel
+                descripitonLabel.alpha = 0.5
+                return "Descripción vacía"
+            }
+        } else {
+            descripitonLabel.textColor = .secondaryLabel
+            descripitonLabel.alpha = 0.5
+            return "No hay descripción"
+        }
     }
-    
-    private func setDefaultDescription() -> String{
-        descripitonLabel.alpha = 0.35
-        return "Esta transacción no tiene descripción"
-    }
-    
     
     private func setIncomeColor() {
-        totalView.backgroundColor = UIColor.incomeColor
-        //topSeparator.backgroundColor = UIColor.incomeColor
+        euroView.backgroundColor = UIColor.incomeColor
+        leftSeparator.backgroundColor = UIColor.incomeColor
     }
     
     private func setExpenseColor() {
-        totalView.backgroundColor = UIColor.expenseColor
-        //topSeparator.backgroundColor = UIColor.expenseColor
+        euroView.backgroundColor = UIColor.expenseColor
+        leftSeparator.backgroundColor = UIColor.expenseColor
     }
-}
-
-extension UIColor {
-    static let bgTotalColor = UIColor(red: 128/255.0, green: 128/255.0, blue: 128/255.0, alpha: 0.3)
-    static let bgStackFeeColor = UIColor(red: 253/255.0, green: 141/255.0, blue: 14/255.0, alpha: 0.25)
-    static let expenseColor = UIColor(red: 255/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.35)
-    static let incomeColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 0/255.0, alpha: 0.35)
+    
 }
