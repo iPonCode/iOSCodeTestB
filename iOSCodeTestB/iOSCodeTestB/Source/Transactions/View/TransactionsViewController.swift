@@ -90,7 +90,7 @@ extension TransactionsViewController: UITableViewDataSource {
             
             // TODO: load info in data array at indexPath.row and configure cell
             let transaction = transactions[indexPath.row]
-            cell.configure(id: String(transaction.amount))
+            cell.configure(id: String(transaction.description ?? "Esta transacción no tiene descripción"))
             
             // TODO: protocol for cell actions, maybe needed to check/unceck certain cell options,
             //       like mark as favourite or similar
