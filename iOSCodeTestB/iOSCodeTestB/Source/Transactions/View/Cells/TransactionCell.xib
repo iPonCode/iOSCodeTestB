@@ -15,15 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHH-3C-Aav" userLabel="Top Separator">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
-                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="6Aj-YL-tx7"/>
-                        </constraints>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fugiat elit cupidatat ipsum ad Lorem aliquip." lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNf-Le-JBa" userLabel="Descripction">
-                        <rect key="frame" x="8" y="4" width="308" height="41"/>
+                        <rect key="frame" x="12" y="4" width="304" height="41"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="highlightedColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -111,35 +104,42 @@
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <color key="highlightedColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHH-3C-Aav" userLabel="Left Separator">
+                        <rect key="frame" x="0.0" y="0.0" width="4" height="72"/>
+                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="4" id="RD7-8q-zQY"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="HHH-3C-Aav" secondAttribute="bottom" id="62l-EW-5Qe"/>
                     <constraint firstItem="eNf-Le-JBa" firstAttribute="top" secondItem="uyi-JV-Njy" secondAttribute="top" constant="4" id="AJz-Ke-Yd8"/>
+                    <constraint firstItem="eNf-Le-JBa" firstAttribute="leading" secondItem="HHH-3C-Aav" secondAttribute="trailing" constant="8" id="IBP-1R-6RS"/>
                     <constraint firstItem="kux-Qo-7iD" firstAttribute="leading" secondItem="RsJ-AK-GWN" secondAttribute="trailing" constant="8" id="ItT-U5-zMf"/>
                     <constraint firstItem="RsJ-AK-GWN" firstAttribute="leading" secondItem="eNf-Le-JBa" secondAttribute="trailing" constant="4" id="Kmd-nF-ru3"/>
-                    <constraint firstItem="eNf-Le-JBa" firstAttribute="leading" secondItem="uyi-JV-Njy" secondAttribute="leading" constant="8" id="LUw-mk-YaS"/>
-                    <constraint firstItem="HHH-3C-Aav" firstAttribute="leading" secondItem="uyi-JV-Njy" secondAttribute="leading" id="M7R-zW-bsJ"/>
                     <constraint firstItem="kux-Qo-7iD" firstAttribute="top" secondItem="RsJ-AK-GWN" secondAttribute="top" id="MyQ-qz-4wd"/>
                     <constraint firstAttribute="bottom" secondItem="iEV-Is-5CW" secondAttribute="bottom" constant="8" id="SE0-fj-MdT"/>
                     <constraint firstAttribute="trailing" secondItem="0Cp-en-dgR" secondAttribute="trailing" constant="8" id="WAw-YO-HLX"/>
-                    <constraint firstItem="HHH-3C-Aav" firstAttribute="top" secondItem="uyi-JV-Njy" secondAttribute="top" id="WHc-aO-qbk"/>
-                    <constraint firstAttribute="trailing" secondItem="HHH-3C-Aav" secondAttribute="trailing" id="Wbm-xi-DWE"/>
                     <constraint firstAttribute="bottom" secondItem="0Cp-en-dgR" secondAttribute="bottom" constant="4" id="WmV-P9-JH6"/>
                     <constraint firstAttribute="trailing" secondItem="kux-Qo-7iD" secondAttribute="trailing" constant="8" id="d3j-ST-POC"/>
+                    <constraint firstItem="HHH-3C-Aav" firstAttribute="top" secondItem="uyi-JV-Njy" secondAttribute="top" id="rxV-2e-FU9"/>
                     <constraint firstItem="0Cp-en-dgR" firstAttribute="leading" secondItem="iEV-Is-5CW" secondAttribute="trailing" constant="8" id="rzO-IM-xwD"/>
                     <constraint firstItem="iEV-Is-5CW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RsJ-AK-GWN" secondAttribute="bottom" constant="8" id="tu0-kn-WXq"/>
                     <constraint firstItem="RsJ-AK-GWN" firstAttribute="top" secondItem="uyi-JV-Njy" secondAttribute="top" constant="8" id="vlC-ii-VXX"/>
+                    <constraint firstItem="HHH-3C-Aav" firstAttribute="leading" secondItem="uyi-JV-Njy" secondAttribute="leading" id="wYN-du-D0w"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="amountLabel" destination="tLb-VK-wdy" id="Udm-e0-nNX"/>
                 <outlet property="dateLabel" destination="iEV-Is-5CW" id="sC9-9v-4hE"/>
                 <outlet property="descripitonLabel" destination="eNf-Le-JBa" id="j0P-Sw-5qQ"/>
+                <outlet property="euroView" destination="0Cp-en-dgR" id="7PS-i6-OIN"/>
                 <outlet property="feeLabel" destination="kSD-Ok-ndh" id="K36-q3-VDf"/>
+                <outlet property="leftSeparator" destination="HHH-3C-Aav" id="BV7-eC-YPp"/>
                 <outlet property="stackFee" destination="RsJ-AK-GWN" id="erx-lI-QFs"/>
                 <outlet property="stackFeeWidthConstraint" destination="AhZ-JL-lJe" id="SS1-cI-Li2"/>
-                <outlet property="topSeparator" destination="HHH-3C-Aav" id="BV7-eC-YPp"/>
                 <outlet property="totalLabel" destination="kux-Qo-7iD" id="avS-mK-8F8"/>
-                <outlet property="totalView" destination="0Cp-en-dgR" id="7PS-i6-OIN"/>
             </connections>
             <point key="canvasLocation" x="205.79710144927537" y="75"/>
         </tableViewCell>

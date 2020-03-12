@@ -14,10 +14,10 @@ class TransactionsViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    
+
     var viewModel: TransactionsViewModel = TransactionsViewModelImpl()
     var transactions: Transactions = Transactions() // this will be binded
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: configure view, binding and lauch viewmodel method to webservice
@@ -31,7 +31,7 @@ class TransactionsViewController: UIViewController {
         }
     
     }
-    
+
     func configureView() {
         
         // TODO: Register cell
@@ -43,7 +43,7 @@ class TransactionsViewController: UIViewController {
         
         title = "Consultando transacciones.."
     }
-    
+
     func bindViewModel() {
         
         // Start Listening
@@ -57,7 +57,7 @@ class TransactionsViewController: UIViewController {
             self?.updateTitle()
         })
     }
-    
+
     func retrieveTransactions() {
         viewModel.retrieveTransactions()
     }
@@ -71,34 +71,37 @@ class TransactionsViewController: UIViewController {
 // MARK: - Methods of UITableViewDataSource protocol
 
 extension TransactionsViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72 // provisional value
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactions.count // provisional value 15, this will be count of data array (binded)
+        return transactions.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         if let cell = tableView.dequeueReusableCell(withIdentifier: TransactionsViewController.TransactionCellIdAndNibName, for: indexPath) as? TransactionCellImpl {
-            
-            // TODO: load info in data array at indexPath.row and configure cell
+
             let transaction = transactions[indexPath.row]
-            cell.configure(id: String(transaction.description ?? "Esta transacción no tiene descripción"))
-            
+            cell.configure(id: transaction.id,
+                           date: transaction.date,
+                           amount: transaction.amount,
+                           fee: transaction.fee ?? nil,
+                           description: transaction.description ?? nil)
+
             // TODO: protocol for cell actions, maybe needed to check/unceck certain cell options,
             //       like mark as favourite or similar
             //cell.delegate = self
 
-            // TODO: asign indexPath to cell tag will be necessary to know witch cell was selected
+            // TODO: assign indexPath to cell tag may be necessary to know witch cell was selected
             cell.tag = indexPath.row
-            
+
             return cell
         }
         
@@ -112,7 +115,11 @@ extension TransactionsViewController: UITableViewDataSource {
 extension TransactionsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         // TODO: push to a detailed view
+
+        // because highlighted color was setted (storyboard) for some label, this effect is wanted
+        // uncomment next line if wanted this effect only while the cell is being pressed
         //tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -131,6 +138,7 @@ extension TransactionsViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
         // TODO: call ViewModel method width text to filter data
      }
 

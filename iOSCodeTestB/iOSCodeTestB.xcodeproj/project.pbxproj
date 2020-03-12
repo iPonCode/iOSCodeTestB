@@ -14,6 +14,7 @@
 		D05FC8612418851300B347D8 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC8602418851300B347D8 /* TransactionsViewModel.swift */; };
 		D05FC86324188B3000B347D8 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC86224188B3000B347D8 /* TransactionModel.swift */; };
 		D05FC86824188C4600B347D8 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC86724188C4600B347D8 /* Observable.swift */; };
+		D0CFE470241AE15E00093A7D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFE46F241AE15E00093A7D /* UIColor.swift */; };
 		D0D7B3CB24183E38009C57F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CA24183E38009C57F3 /* AppDelegate.swift */; };
 		D0D7B3CD24183E38009C57F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CC24183E38009C57F3 /* SceneDelegate.swift */; };
 		D0D7B3CF24183E38009C57F3 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CE24183E38009C57F3 /* TransactionsViewController.swift */; };
@@ -43,6 +44,7 @@
 		D05FC8602418851300B347D8 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		D05FC86224188B3000B347D8 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		D05FC86724188C4600B347D8 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		D0CFE46F241AE15E00093A7D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D0D7B3C724183E38009C57F3 /* iOSCodeTestB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCodeTestB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D7B3CA24183E38009C57F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D7B3CC24183E38009C57F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		D05FC86524188C1D00B347D8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D0CFE46E241AE0EA00093A7D /* Utils */,
 				D05FC86624188C2C00B347D8 /* Models */,
 			);
 			path = Common;
@@ -112,6 +115,14 @@
 				D05FC86724188C4600B347D8 /* Observable.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D0CFE46E241AE0EA00093A7D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D0CFE46F241AE15E00093A7D /* UIColor.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		D0D7B3BE24183E38009C57F3 = {
@@ -392,6 +403,7 @@
 				D05FC8612418851300B347D8 /* TransactionsViewModel.swift in Sources */,
 				D05FC86824188C4600B347D8 /* Observable.swift in Sources */,
 				D0D7B3CF24183E38009C57F3 /* TransactionsViewController.swift in Sources */,
+				D0CFE470241AE15E00093A7D /* UIColor.swift in Sources */,
 				D0D7B3CB24183E38009C57F3 /* AppDelegate.swift in Sources */,
 				D0D7B3CD24183E38009C57F3 /* SceneDelegate.swift in Sources */,
 			);
