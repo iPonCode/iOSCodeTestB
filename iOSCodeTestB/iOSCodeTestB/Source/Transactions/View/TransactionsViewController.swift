@@ -22,7 +22,7 @@ class TransactionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: configure view, binding and lauch viewmodel method to webservice
+
         configureView()
         bindViewModel()
         retrieveTransactions()
@@ -36,16 +36,16 @@ class TransactionsViewController: UIViewController {
 
     func configureView() {
         
-        // TODO: Register cell
+        // Register cells
         headerTableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
         
         tableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
         
-        // TODO: Configure searchBar
+        // Configure searchBar
+        searchBar.barStyle = .default
+        searchBar.showsCancelButton = true
         
-        // TODO: Configure navigation button
-        
-        title = "Consultando transacciones…"
+        title = "Cargando transacciones…"
     }
 
     func bindViewModel() {
@@ -77,7 +77,7 @@ class TransactionsViewController: UIViewController {
     }
 
     func updateTitle() {
-        title = String(format: "%d Transacciones", transactions.count + 1)
+        title = String(format: "mostrando %d Transacciones", transactions.count + 1)
     }
     
 }
