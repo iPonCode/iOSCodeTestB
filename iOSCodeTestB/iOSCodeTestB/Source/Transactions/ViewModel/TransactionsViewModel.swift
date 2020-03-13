@@ -42,10 +42,11 @@ class TransactionsViewModelImpl: TransactionsViewModel {
             
             //guard let `self` = self else{ return }
             
-            // Clean items with wrong formatted dates, sort descending by date and remove duplicates by id
-            self?.transactions.value = transactions.onlyDatedTransactions
+            // Remove duplicates by id Clean items with wrong formatted dates, sort descending by date and
+            self?.transactions.value = transactions.removingDuplicates()
+                    .onlyDatedTransactions
                     .sorted(by: { $0.date! > $1.date! })
-                    .removingDuplicates()//.unique
+                    //.unique
         }
         
     }
