@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TransactionCell {
-    func configure(id: Int, date: String, amount: Double, fee: Double?, description: String?)
+    func configure(id: Int, date: Date, amount: Double, fee: Double?, description: String?)
 }
 
 class TransactionCellImpl: UITableViewCell, TransactionCell {
@@ -28,7 +28,7 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
         super.awakeFromNib()
     }
     
-    func configure(id: Int, date: String, amount: Double, fee: Double?, description: String?) {
+    func configure(id: Int, date: Date, amount: Double, fee: Double?, description: String?) {
         
         // TODO: Configure logic to hide/show stackFee and update totalView color depending amount sign
         
@@ -47,7 +47,7 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
         amount < 0.0 ? setExpenseColor() : setIncomeColor()
         
         // Set cell info
-        dateLabel.text = date
+        dateLabel.text = setDate(date)
         amountLabel.text = String(amount)
         feeLabel.text = String(fee ?? 0.0)
         totalLabel.text = String(format:"%.2f", amount + (fee ?? 0.0))
@@ -63,6 +63,15 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
         } else {
             stackFeeWidthConstraint.constant = 0.0
         }
+    }
+    
+    private func setDate(_ date: Date) -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "es_ES")//.current
+        dateFormatter.dateStyle = .full
+        return dateFormatter.string(from: date).capitalizingFirstLetter()
+
     }
     
     private func setDescription(_ text: String?) -> String {

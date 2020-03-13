@@ -44,7 +44,8 @@ class TransactionsViewModelImpl: TransactionsViewModel {
             //debugPrint("retrieveTransactions - Dump viewModel data stored:")
             //dump(self?.transactions.value)
             
-            // TODO: filter, short, etc..
+            // TODO: short, etc..
+            self?.transactions.value = self?.transactions.value?.transactionsWithDate
         }
         
     }
