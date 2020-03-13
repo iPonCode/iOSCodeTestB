@@ -3,15 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		058A703738BFD251D5A2B61B /* libPods-iOSCodeTestBTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E128E6315EBCC35AC008C69B /* libPods-iOSCodeTestBTests.a */; };
 		7ABAD62AC009817A755F4AA1 /* Pods_iOSCodeTestB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C93F578049C77984EED4F41 /* Pods_iOSCodeTestB.framework */; };
+		D05FC85D241876B300B347D8 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05FC85C241876B300B347D8 /* TransactionCell.xib */; };
+		D05FC85F2418778D00B347D8 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC85E2418778D00B347D8 /* TransactionCell.swift */; };
+		D05FC8612418851300B347D8 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC8602418851300B347D8 /* TransactionsViewModel.swift */; };
+		D05FC86324188B3000B347D8 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC86224188B3000B347D8 /* TransactionModel.swift */; };
+		D05FC86824188C4600B347D8 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC86724188C4600B347D8 /* Observable.swift */; };
+		D0CFE470241AE15E00093A7D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFE46F241AE15E00093A7D /* UIColor.swift */; };
+		D0CFE472241AEFB000093A7D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFE471241AEFB000093A7D /* Date.swift */; };
+		D0CFE474241AF20B00093A7D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFE473241AF20B00093A7D /* Array.swift */; };
+		D0CFE476241AFCCA00093A7D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFE475241AFCCA00093A7D /* String.swift */; };
 		D0D7B3CB24183E38009C57F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CA24183E38009C57F3 /* AppDelegate.swift */; };
 		D0D7B3CD24183E38009C57F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CC24183E38009C57F3 /* SceneDelegate.swift */; };
-		D0D7B3CF24183E38009C57F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CE24183E38009C57F3 /* ViewController.swift */; };
+		D0D7B3CF24183E38009C57F3 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CE24183E38009C57F3 /* TransactionsViewController.swift */; };
 		D0D7B3D224183E38009C57F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D7B3D024183E38009C57F3 /* Main.storyboard */; };
 		D0D7B3D424183E40009C57F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D7B3D324183E40009C57F3 /* Assets.xcassets */; };
 		D0D7B3D724183E40009C57F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D7B3D524183E40009C57F3 /* LaunchScreen.storyboard */; };
@@ -33,10 +42,19 @@
 		8F953A461902F440C4524CAD /* Pods-iOSCodeTestBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSCodeTestBTests.release.xcconfig"; path = "Target Support Files/Pods-iOSCodeTestBTests/Pods-iOSCodeTestBTests.release.xcconfig"; sourceTree = "<group>"; };
 		9C93F578049C77984EED4F41 /* Pods_iOSCodeTestB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSCodeTestB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DAD37D545AE14304BEAAF0 /* Pods-iOSCodeTestBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSCodeTestBTests.debug.xcconfig"; path = "Target Support Files/Pods-iOSCodeTestBTests/Pods-iOSCodeTestBTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D05FC85C241876B300B347D8 /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCell.xib; sourceTree = "<group>"; };
+		D05FC85E2418778D00B347D8 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		D05FC8602418851300B347D8 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
+		D05FC86224188B3000B347D8 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
+		D05FC86724188C4600B347D8 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		D0CFE46F241AE15E00093A7D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		D0CFE471241AEFB000093A7D /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		D0CFE473241AF20B00093A7D /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		D0CFE475241AFCCA00093A7D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D0D7B3C724183E38009C57F3 /* iOSCodeTestB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCodeTestB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D7B3CA24183E38009C57F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D7B3CC24183E38009C57F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D0D7B3CE24183E38009C57F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0D7B3CE24183E38009C57F3 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		D0D7B3D124183E38009C57F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0D7B3D324183E40009C57F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0D7B3D624183E40009C57F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,8 +103,35 @@
 				C2DAD37D545AE14304BEAAF0 /* Pods-iOSCodeTestBTests.debug.xcconfig */,
 				8F953A461902F440C4524CAD /* Pods-iOSCodeTestBTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D05FC86524188C1D00B347D8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D0CFE46E241AE0EA00093A7D /* Utils */,
+				D05FC86624188C2C00B347D8 /* Models */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D05FC86624188C2C00B347D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D05FC86724188C4600B347D8 /* Observable.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D0CFE46E241AE0EA00093A7D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D0CFE46F241AE15E00093A7D /* UIColor.swift */,
+				D0CFE471241AEFB000093A7D /* Date.swift */,
+				D0CFE473241AF20B00093A7D /* Array.swift */,
+				D0CFE475241AFCCA00093A7D /* String.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		D0D7B3BE24183E38009C57F3 = {
@@ -130,6 +175,7 @@
 		D0D7B3EC24183F13009C57F3 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D05FC86524188C1D00B347D8 /* Common */,
 				D0D7B3EE2418437C009C57F3 /* Transactions */,
 				D0D7B3CA24183E38009C57F3 /* AppDelegate.swift */,
 				D0D7B3CC24183E38009C57F3 /* SceneDelegate.swift */,
@@ -161,6 +207,7 @@
 		D0D7B3EF241843A5009C57F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D05FC86224188B3000B347D8 /* TransactionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				D0D7B3F2241843CF009C57F3 /* Cells */,
-				D0D7B3CE24183E38009C57F3 /* ViewController.swift */,
+				D0D7B3CE24183E38009C57F3 /* TransactionsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,6 +224,7 @@
 		D0D7B3F1241843BB009C57F3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D05FC8602418851300B347D8 /* TransactionsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -184,6 +232,8 @@
 		D0D7B3F2241843CF009C57F3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D05FC85C241876B300B347D8 /* TransactionCell.xib */,
+				D05FC85E2418778D00B347D8 /* TransactionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -272,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D05FC85D241876B300B347D8 /* TransactionCell.xib in Resources */,
 				D0D7B3D724183E40009C57F3 /* LaunchScreen.storyboard in Resources */,
 				D0D7B3D424183E40009C57F3 /* Assets.xcassets in Resources */,
 				D0D7B3D224183E38009C57F3 /* Main.storyboard in Resources */,
@@ -356,8 +407,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0D7B3CF24183E38009C57F3 /* ViewController.swift in Sources */,
+				D05FC86324188B3000B347D8 /* TransactionModel.swift in Sources */,
+				D0CFE476241AFCCA00093A7D /* String.swift in Sources */,
+				D0CFE474241AF20B00093A7D /* Array.swift in Sources */,
+				D05FC85F2418778D00B347D8 /* TransactionCell.swift in Sources */,
+				D05FC8612418851300B347D8 /* TransactionsViewModel.swift in Sources */,
+				D05FC86824188C4600B347D8 /* Observable.swift in Sources */,
+				D0D7B3CF24183E38009C57F3 /* TransactionsViewController.swift in Sources */,
+				D0CFE470241AE15E00093A7D /* UIColor.swift in Sources */,
 				D0D7B3CB24183E38009C57F3 /* AppDelegate.swift in Sources */,
+				D0CFE472241AEFB000093A7D /* Date.swift in Sources */,
 				D0D7B3CD24183E38009C57F3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
