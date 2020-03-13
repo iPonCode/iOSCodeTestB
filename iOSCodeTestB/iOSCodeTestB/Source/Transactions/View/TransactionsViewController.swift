@@ -41,7 +41,7 @@ class TransactionsViewController: UIViewController {
         
         // TODO: Configure navigation button
         
-        title = "Consultando transacciones.."
+        title = "Consultando transacciones…"
     }
 
     func bindViewModel() {
@@ -90,7 +90,7 @@ extension TransactionsViewController: UITableViewDataSource {
 
             let transaction = transactions[indexPath.row]
             cell.configure(id: transaction.id,
-                           date: transaction.date,
+                           date: transaction.date!, // at this point sure this Date is not nil // ?? Date(),
                            amount: transaction.amount,
                            fee: transaction.fee ?? nil,
                            description: transaction.description ?? nil)

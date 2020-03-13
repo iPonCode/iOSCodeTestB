@@ -26,14 +26,41 @@ typealias Transactions = [Transaction]
 
 struct Transaction: Codable {
     let id: Int
-    let date: String
+    let date: Date?
     let amount: Double
     let fee: Double?
     let description: String?
 
+    init(id: Int, date: Date?, amount: Double, fee: Double?, description: String?) {
+        self.id = id
+        self.date = date
+        self.amount = amount
+        self.fee = fee
+        self.description = description
+    }
+
     enum CodingKeys: String, CodingKey {
         case id, date, amount, fee, description
     }
+
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = try container.decode(Int.self, forKey: .id)
+        
+        if let dateStr = try? container.decodeIfPresent(String.self, forKey: .date) {
+            date = Date.dateFormatted(dateString: dateStr)
+            
+        } else {
+            date = nil
+        }
+        
+        amount = try container.decode(Double.self, forKey: .amount)
+        fee = try? container.decodeIfPresent(Double.self, forKey: .fee)
+        description = try? container.decodeIfPresent(String.self, forKey: .description)
+    }
+
 }
 
 

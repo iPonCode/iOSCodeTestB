@@ -15,6 +15,9 @@
 		D05FC86324188B3000B347D8 /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC86224188B3000B347D8 /* TransactionModel.swift */; };
 		D05FC86824188C4600B347D8 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC86724188C4600B347D8 /* Observable.swift */; };
 		D0CFE470241AE15E00093A7D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFE46F241AE15E00093A7D /* UIColor.swift */; };
+		D0CFE472241AEFB000093A7D /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFE471241AEFB000093A7D /* Date.swift */; };
+		D0CFE474241AF20B00093A7D /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFE473241AF20B00093A7D /* Array.swift */; };
+		D0CFE476241AFCCA00093A7D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFE475241AFCCA00093A7D /* String.swift */; };
 		D0D7B3CB24183E38009C57F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CA24183E38009C57F3 /* AppDelegate.swift */; };
 		D0D7B3CD24183E38009C57F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CC24183E38009C57F3 /* SceneDelegate.swift */; };
 		D0D7B3CF24183E38009C57F3 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3CE24183E38009C57F3 /* TransactionsViewController.swift */; };
@@ -45,6 +48,9 @@
 		D05FC86224188B3000B347D8 /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		D05FC86724188C4600B347D8 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D0CFE46F241AE15E00093A7D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		D0CFE471241AEFB000093A7D /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		D0CFE473241AF20B00093A7D /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		D0CFE475241AFCCA00093A7D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D0D7B3C724183E38009C57F3 /* iOSCodeTestB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSCodeTestB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D7B3CA24183E38009C57F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D7B3CC24183E38009C57F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				D0CFE46F241AE15E00093A7D /* UIColor.swift */,
+				D0CFE471241AEFB000093A7D /* Date.swift */,
+				D0CFE473241AF20B00093A7D /* Array.swift */,
+				D0CFE475241AFCCA00093A7D /* String.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -399,12 +408,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D05FC86324188B3000B347D8 /* TransactionModel.swift in Sources */,
+				D0CFE476241AFCCA00093A7D /* String.swift in Sources */,
+				D0CFE474241AF20B00093A7D /* Array.swift in Sources */,
 				D05FC85F2418778D00B347D8 /* TransactionCell.swift in Sources */,
 				D05FC8612418851300B347D8 /* TransactionsViewModel.swift in Sources */,
 				D05FC86824188C4600B347D8 /* Observable.swift in Sources */,
 				D0D7B3CF24183E38009C57F3 /* TransactionsViewController.swift in Sources */,
 				D0CFE470241AE15E00093A7D /* UIColor.swift in Sources */,
 				D0D7B3CB24183E38009C57F3 /* AppDelegate.swift in Sources */,
+				D0CFE472241AEFB000093A7D /* Date.swift in Sources */,
 				D0D7B3CD24183E38009C57F3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
