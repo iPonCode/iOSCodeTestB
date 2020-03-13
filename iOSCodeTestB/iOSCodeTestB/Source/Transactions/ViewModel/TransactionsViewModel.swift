@@ -30,7 +30,7 @@ class TransactionsViewModelImpl: TransactionsViewModel {
 
         // TODO: move this to a Constants static struct
         let url = "https://api.myjson.com/bins/1a30k8"
-        //https://api.myjson.com/bins/rmw3u"
+        //"https://api.myjson.com/bins/rmw3u"
         //"https://api.myjson.com/bins/cvcay"
         
         AF.request(url).responseJSON {[weak self] response in
@@ -44,14 +44,20 @@ class TransactionsViewModelImpl: TransactionsViewModel {
             //debugPrint("retrieveTransactions - Dump viewModel data stored:")
             //dump(self?.transactions.value)
             
-            // TODO: short, etc..
-            self?.transactions.value = self?.transactions.value?.transactionsWithDate
+            self?.cleanAndSort()
         }
         
+    }
+    
+    func cleanAndSort() {
+        
+        // TODO: short by date
+        transactions.value = transactions.value?.onlyDatedTransactions
+        transactions.value = transactions.value?.removingDuplicates()
     }
     
     // TODO: Update data with filterText
     
     // TODO: method in protocol that receive filter text from viewcontroller and update filterText viewModel var
-    
+
 }
