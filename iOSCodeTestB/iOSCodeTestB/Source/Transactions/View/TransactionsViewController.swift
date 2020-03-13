@@ -177,8 +177,7 @@ extension TransactionsViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        // TODO: call ViewModel method width text to filter data
+        viewModel.searchText(searchText)
      }
 
 }

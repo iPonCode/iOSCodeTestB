@@ -13,8 +13,8 @@ protocol TransactionsViewModel {
     var transactions: Observable<Transactions> {get}
     var firstTransaction: Observable<Transaction> {get}
 
-    // TODO: Declare the methods will need use from viewcontroller like retrieve data or filter text
     func retrieveTransactions()
+    func searchText(_ text: String)
 }
 
 // Here the business logic
@@ -22,18 +22,21 @@ class TransactionsViewModelImpl: TransactionsViewModel {
     
     var transactions = Observable<Transactions>([], thread: .main)
     var firstTransaction = Observable<Transaction>(nil, thread: .main)
+    var localTransactions: [Transaction] = []
 
-    // TODO: Declare private var to store the filterText in seachBar with a didSet than updateData
-    
+    private var filterText: String = "" {
+        didSet {
+            updateTransactionsWithFilter()
+        }
+    }
+
     // The webservice call
     func retrieveTransactions() {
         
         debugPrint("retrieveTransactions - Retrieving transactions from Webservice..")
 
         // TODO: move this to a Constants static struct
-        let url = "https://api.myjson.com/bins/1a30k8"
-        //"https://api.myjson.com/bins/rmw3u"
-        //"https://api.myjson.com/bins/cvcay"
+        let url = "https://api.myjson.com/bins/1a30k8" //1a30k8//13a73a//j3tee//rmw3u//cvcay//16okye//1gsy8m
         
         AF.request(url).responseJSON {[weak self] response in
             
@@ -50,13 +53,27 @@ class TransactionsViewModelImpl: TransactionsViewModel {
                 .sorted(by: { $0.date! > $1.date! })
                     //.unique
             self?.firstTransaction.value = self?.transactions.value?.first
-            self?.transactions.value = Array((self?.transactions.value!.dropFirst())!)
+            self?.transactions.value = Array((self?.transactions.value?.dropFirst() ?? []))
+            self?.localTransactions = self?.transactions.value ?? []
+
         }
         
     }
         
-    // TODO: Update data with filterText
+    func updateTransactionsWithFilter () {
+        
+        if !filterText.isEmpty {
+            transactions.value = localTransactions.filter({
+                ($0.description ?? "").lowercased().contains(filterText.lowercased())
+            })
+
+        } else {
+            transactions.value = localTransactions
+        }
+    }
     
-    // TODO: method in protocol that receive filter text from viewcontroller and update filterText viewModel var
+    func searchText(_ text: String) {
+        filterText = text
+    }
 
 }
