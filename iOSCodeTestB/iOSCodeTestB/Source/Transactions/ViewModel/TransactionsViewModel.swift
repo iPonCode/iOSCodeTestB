@@ -40,22 +40,16 @@ class TransactionsViewModelImpl: TransactionsViewModel {
                 return
             }
             
-            self?.transactions.value = transactions
-            //debugPrint("retrieveTransactions - Dump viewModel data stored:")
-            //dump(self?.transactions.value)
+            //guard let `self` = self else{ return }
             
-            self?.cleanAndSort()
+            // Clean items with wrong formatted dates, sort descending by date and remove duplicates by id
+            self?.transactions.value = transactions.onlyDatedTransactions
+                    .sorted(by: { $0.date! > $1.date! })
+                    .removingDuplicates()//.unique
         }
         
     }
-    
-    func cleanAndSort() {
         
-        // TODO: short by date
-        transactions.value = transactions.value?.onlyDatedTransactions
-        transactions.value = transactions.value?.removingDuplicates()
-    }
-    
     // TODO: Update data with filterText
     
     // TODO: method in protocol that receive filter text from viewcontroller and update filterText viewModel var
