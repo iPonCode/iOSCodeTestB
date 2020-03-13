@@ -17,14 +17,15 @@ import Foundation
 
 /**
  "id":1442,
- "date":"2018-07-24T18:10:10.000Z",
+ "date":"2018-07-24T18:10:10.000Z", //wrong formatted will be descarted
  "amount":-113.86,
- "description":""
+ "description":"" //also null
  */
 
 typealias Transactions = [Transaction]
 
-struct Transaction: Codable {
+struct Transaction: Codable, Hashable { // needed hashable to remove duplicates
+    
     let id: Int
     let date: Date?
     let amount: Double
@@ -60,7 +61,12 @@ struct Transaction: Codable {
         fee = try? container.decodeIfPresent(Double.self, forKey: .fee)
         description = try? container.decodeIfPresent(String.self, forKey: .description)
     }
-
+    
+    // needed to remove duplicates (by id)
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
 }
 
 
