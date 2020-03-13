@@ -14,9 +14,10 @@ class TransactionsViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-
+    
     var viewModel: TransactionsViewModel = TransactionsViewModelImpl()
     var transactions: Transactions = Transactions() // this will be binded
+    var firstTransaction: Transaction = Transaction()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class TransactionsViewController: UIViewController {
 
     func bindViewModel() {
         
-        // Start Listening
+        // Start Listening transaction array
         viewModel.transactions.bind({ [weak self] (result) in
             guard let result = result else {
                 return
@@ -56,6 +57,16 @@ class TransactionsViewController: UIViewController {
             self?.tableView.reloadData()
             self?.updateTitle()
         })
+
+        // Start Listening first transaction
+        viewModel.firstTransaction.bind({ [weak self] (result) in
+            guard let result = result else {
+                return
+            }
+            // This will occur when viewmodel var update itself
+            self?.firstTransaction = result
+            self?.reloadFirst()
+        })
     }
 
     func retrieveTransactions() {
@@ -64,6 +75,9 @@ class TransactionsViewController: UIViewController {
 
     func updateTitle() {
         title = String(format: "%d Transacciones", transactions.count)
+    }
+    
+    func reloadFirst() {
     }
 
 }

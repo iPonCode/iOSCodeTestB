@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fLb-T7-BZr">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fLb-T7-BZr" userLabel="Header Stack View">
                                 <rect key="frame" x="0.0" y="88" width="414" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="32X-yB-F0m"/>

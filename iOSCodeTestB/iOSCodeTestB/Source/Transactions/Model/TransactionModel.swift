@@ -62,6 +62,14 @@ struct Transaction: Codable, Hashable { // needed hashable to remove duplicates
         description = try? container.decodeIfPresent(String.self, forKey: .description)
     }
     
+    init() {
+        self.id = 0
+        self.date = nil
+        self.amount = 0.0
+        self.fee = nil
+        self.description = nil
+    }
+    
     // needed to remove duplicates (by id)
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id

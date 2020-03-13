@@ -30,8 +30,6 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
     
     func configure(id: Int, date: Date, amount: Double, fee: Double?, description: String?) {
         
-        // TODO: Configure logic to hide/show stackFee and update totalView color depending amount sign
-        
         let width:CGFloat = euroView.bounds.width
         euroView.layer.masksToBounds = true
         euroView.layer.cornerRadius = width/3

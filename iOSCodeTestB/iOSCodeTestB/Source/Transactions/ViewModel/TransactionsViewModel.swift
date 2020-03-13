@@ -11,6 +11,7 @@ import Alamofire
 protocol TransactionsViewModel {
     
     var transactions: Observable<Transactions> {get}
+    var firstTransaction: Observable<Transaction> {get}
 
     // TODO: Declare the methods will need use from viewcontroller like retrieve data or filter text
     func retrieveTransactions()
@@ -20,6 +21,7 @@ protocol TransactionsViewModel {
 class TransactionsViewModelImpl: TransactionsViewModel {
     
     var transactions = Observable<Transactions>([], thread: .main)
+    var firstTransaction = Observable<Transaction>(nil, thread: .main)
 
     // TODO: Declare private var to store the filterText in seachBar with a didSet than updateData
     
@@ -45,8 +47,10 @@ class TransactionsViewModelImpl: TransactionsViewModel {
             // Remove duplicates by id Clean items with wrong formatted dates, sort descending by date and
             self?.transactions.value = transactions.removingDuplicates()
                     .onlyDatedTransactions
-                    .sorted(by: { $0.date! > $1.date! })
+                .sorted(by: { $0.date! > $1.date! })
                     //.unique
+            self?.firstTransaction.value = self?.transactions.value?.first
+            //self?.transactions.value = self?.transactions.value?.dropFirst()
         }
         
     }
