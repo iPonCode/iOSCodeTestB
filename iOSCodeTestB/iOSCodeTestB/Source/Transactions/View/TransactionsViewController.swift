@@ -150,10 +150,9 @@ extension TransactionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // TODO: push to a detailed view
+        searchBar.resignFirstResponder()
 
-        // because highlighted color was setted (storyboard) for some label, this effect is wanted
-        
-    
+        // Because highlighted color was setted (storyboard) for some label, this effect is wanted
         // uncomment next line if wanted this effect only while the tableView cells is being pressed
         //tableView.deselectRow(at: indexPath, animated: true)
         
