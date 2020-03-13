@@ -50,7 +50,7 @@ class TransactionsViewModelImpl: TransactionsViewModel {
                 .sorted(by: { $0.date! > $1.date! })
                     //.unique
             self?.firstTransaction.value = self?.transactions.value?.first
-            //self?.transactions.value = self?.transactions.value?.dropFirst()
+            self?.transactions.value = Array((self?.transactions.value!.dropFirst())!)
         }
         
     }

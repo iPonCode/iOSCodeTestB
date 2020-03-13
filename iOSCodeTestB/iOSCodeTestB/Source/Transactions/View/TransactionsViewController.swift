@@ -14,6 +14,7 @@ class TransactionsViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var headerTableView: UITableView!
     
     var viewModel: TransactionsViewModel = TransactionsViewModelImpl()
     var transactions: Transactions = Transactions() // this will be binded
@@ -27,8 +28,8 @@ class TransactionsViewController: UIViewController {
         retrieveTransactions()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { // Wait a little bit for async webservice response
-            debugPrint("viewDidload+1.5 - Dump viewController data stored:")
-            dump(self.transactions)
+//            debugPrint("viewDidload+1.5 - Dump viewController data stored:")
+//            dump(self.transactions)
         }
     
     }
@@ -36,6 +37,8 @@ class TransactionsViewController: UIViewController {
     func configureView() {
         
         // TODO: Register cell
+        headerTableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
+        
         tableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
         
         // TODO: Configure searchBar
@@ -65,7 +68,7 @@ class TransactionsViewController: UIViewController {
             }
             // This will occur when viewmodel var update itself
             self?.firstTransaction = result
-            self?.reloadFirst()
+            self?.headerTableView.reloadData()
         })
     }
 
@@ -74,17 +77,16 @@ class TransactionsViewController: UIViewController {
     }
 
     func updateTitle() {
-        title = String(format: "%d Transacciones", transactions.count)
+        title = String(format: "%d Transacciones", transactions.count + 1)
     }
     
-    func reloadFirst() {
-    }
-
 }
 
 // MARK: - Methods of UITableViewDataSource protocol
 
 extension TransactionsViewController: UITableViewDataSource {
+
+    // tableView (transactions) and headerTableView (firstTransaction)
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72 // provisional value
@@ -95,33 +97,50 @@ extension TransactionsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactions.count
+        
+        if tableView == self.tableView {
+            return transactions.count
+        } else {
+            return 1
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         if let cell = tableView.dequeueReusableCell(withIdentifier: TransactionsViewController.TransactionCellIdAndNibName, for: indexPath) as? TransactionCellImpl {
+            
+            if tableView == self.tableView {
+                let transaction = transactions[indexPath.row]
+                cell.configure(id: transaction.id,
+                               date: transaction.date!, // at this point sure this Date is not nil // ?? Date(),
+                               amount: transaction.amount,
+                               fee: transaction.fee ?? nil,
+                               description: transaction.description ?? nil)
 
-            let transaction = transactions[indexPath.row]
-            cell.configure(id: transaction.id,
-                           date: transaction.date!, // at this point sure this Date is not nil // ?? Date(),
-                           amount: transaction.amount,
-                           fee: transaction.fee ?? nil,
-                           description: transaction.description ?? nil)
+                // TODO: protocol for cell actions, maybe needed to check/unceck certain cell options,
+                //       like mark as favourite or similar
+                //cell.delegate = self
 
-            // TODO: protocol for cell actions, maybe needed to check/unceck certain cell options,
-            //       like mark as favourite or similar
-            //cell.delegate = self
-
-            // TODO: assign indexPath to cell tag may be necessary to know witch cell was selected
-            cell.tag = indexPath.row
+                // TODO: assign indexPath to cell tag may be necessary to know witch cell was selected
+                cell.tag = indexPath.row
+                
+            } else if tableView == headerTableView {
+                
+                cell.configure(id: firstTransaction.id,
+                               date: firstTransaction.date ?? Date(),
+                               amount: firstTransaction.amount,
+                               fee: firstTransaction.fee ?? nil,
+                               description: firstTransaction.description ?? nil)
+                debugPrint("datasource headerTableView - Dump viewController firstTransaction stored:")
+                dump(firstTransaction)
+            }
 
             return cell
         }
         
         return UITableViewCell()
     }
-
+    
 }
 
 // MARK: - Methods of UITableViewDelegate protocol
@@ -133,8 +152,14 @@ extension TransactionsViewController: UITableViewDelegate {
         // TODO: push to a detailed view
 
         // because highlighted color was setted (storyboard) for some label, this effect is wanted
-        // uncomment next line if wanted this effect only while the cell is being pressed
+        
+    
+        // uncomment next line if wanted this effect only while the tableView cells is being pressed
         //tableView.deselectRow(at: indexPath, animated: true)
+        
+        if tableView == headerTableView {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
 }
