@@ -9,12 +9,6 @@ import Foundation
 
 // MARK: - Transaction
 
-// TODO: init from decoder trying to get:
-//       - id as Int
-//       - only dates well formated as Date
-//       - amount, fee as Double
-//       - description as String
-
 /**
  "id":1442,
  "date":"2018-07-24T18:10:10.000Z", //wrong formatted will be descarted
@@ -44,6 +38,12 @@ struct Transaction: Codable, Hashable { // needed hashable to remove duplicates
         case id, date, amount, fee, description
     }
 
+    // init from decoder trying to get:
+    //       - id as Int
+    //       - only dates well formated as Date
+    //       - amount, fee as Double
+    //       - description as String
+
     init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -60,6 +60,14 @@ struct Transaction: Codable, Hashable { // needed hashable to remove duplicates
         amount = try container.decode(Double.self, forKey: .amount)
         fee = try? container.decodeIfPresent(Double.self, forKey: .fee)
         description = try? container.decodeIfPresent(String.self, forKey: .description)
+    }
+    
+    init() {
+        self.id = 0
+        self.date = nil
+        self.amount = 0.0
+        self.fee = nil
+        self.description = nil
     }
     
     // needed to remove duplicates (by id)
