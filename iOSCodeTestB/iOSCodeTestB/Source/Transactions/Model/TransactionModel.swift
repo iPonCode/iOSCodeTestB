@@ -9,12 +9,6 @@ import Foundation
 
 // MARK: - Transaction
 
-// TODO: init from decoder trying to get:
-//       - id as Int
-//       - only dates well formated as Date
-//       - amount, fee as Double
-//       - description as String
-
 /**
  "id":1442,
  "date":"2018-07-24T18:10:10.000Z", //wrong formatted will be descarted
@@ -43,6 +37,12 @@ struct Transaction: Codable, Hashable { // needed hashable to remove duplicates
     enum CodingKeys: String, CodingKey {
         case id, date, amount, fee, description
     }
+
+    // init from decoder trying to get:
+    //       - id as Int
+    //       - only dates well formated as Date
+    //       - amount, fee as Double
+    //       - description as String
 
     init(from decoder: Decoder) throws {
         

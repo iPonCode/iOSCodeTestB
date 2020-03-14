@@ -132,6 +132,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="amountLabel" destination="tLb-VK-wdy" id="Udm-e0-nNX"/>
+                <outlet property="contentView" destination="uyi-JV-Njy" id="6BM-zd-Yik"/>
                 <outlet property="dateLabel" destination="iEV-Is-5CW" id="sC9-9v-4hE"/>
                 <outlet property="descripitonLabel" destination="eNf-Le-JBa" id="j0P-Sw-5qQ"/>
                 <outlet property="euroView" destination="0Cp-en-dgR" id="7PS-i6-OIN"/>
