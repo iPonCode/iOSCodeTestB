@@ -9,7 +9,7 @@ An other iOS code test (Banking)
  - [ √ ] Show on the top the last transaction
  - [ * ] Implemented a simply filter (by description)
 
-![screenshoots from version tag 1.0.1](https://github.com/ssuperw/iOSCodeTestB/blob/master/readme-img/iOSCodeTestB-cap-101.jpg)
+![screenshoots from version tag 1.0.1](https://ipon.es/apps/iOSCodeTestB/img/cap-iOSCodeTestB-101.jpg)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwMDUyNTAyM119
+eyJoaXN0b3J5IjpbMjExMTA1MDYwNiwtNjAwNTI1MDIzXX0=
 -->
