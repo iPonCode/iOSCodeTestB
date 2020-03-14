@@ -16,23 +16,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fLb-T7-BZr" userLabel="Header Stack View">
-                                <rect key="frame" x="0.0" y="88" width="414" height="72"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="94"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5mI-jp-a7F">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="72" id="7fK-te-4Zz"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="dataSource" destination="BYZ-38-t0r" id="Vu6-Ld-7tn"/>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="x5h-h6-efH"/>
                                         </connections>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtrar por descripción" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtc-KR-WK2">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="0PX-6N-4Wj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h1w-7P-lg0" userLabel="Separator">
+                                        <rect key="frame" x="0.0" y="92" width="414" height="2"/>
+                                        <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="h3d-wf-Nj2"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="32X-yB-F0m"/>
-                                </constraints>
                             </stackView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Pe1-Lq-KrO">
-                                <rect key="frame" x="0.0" y="160" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="182" width="414" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="Ug6-uC-1zD"/>
                                 </constraints>
@@ -42,7 +58,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cGg-yC-z98">
-                                <rect key="frame" x="0.0" y="216" width="414" height="646"/>
+                                <rect key="frame" x="0.0" y="238" width="414" height="624"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="29W-7u-C1V"/>
@@ -50,7 +66,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fLb-T7-BZr" secondAttribute="trailing" id="6Mx-50-XEA"/>
                             <constraint firstItem="cGg-yC-z98" firstAttribute="top" secondItem="Pe1-Lq-KrO" secondAttribute="bottom" symbolic="YES" id="CBO-Yp-LE5"/>
@@ -67,8 +83,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="RlD-8G-d13"/>
                     <connections>
+                        <outlet property="bottomHeaderSeparator" destination="h1w-7P-lg0" id="2EN-fV-OIc"/>
                         <outlet property="headerTableView" destination="5mI-jp-a7F" id="xSn-qJ-tsq"/>
                         <outlet property="searchBar" destination="Pe1-Lq-KrO" id="nWf-s6-nVr"/>
+                        <outlet property="searchBarHeightConstraint" destination="Ug6-uC-1zD" id="Q57-fg-ze6"/>
+                        <outlet property="searchBarInfoLabel" destination="Xtc-KR-WK2" id="TbR-is-bBj"/>
+                        <outlet property="showSearchBarInfoConstraint" destination="0PX-6N-4Wj" id="cWE-y6-8U9"/>
                         <outlet property="stackView" destination="fLb-T7-BZr" id="Hxl-AG-7KZ"/>
                         <outlet property="tableView" destination="cGg-yC-z98" id="t2J-FJ-7bn"/>
                     </connections>

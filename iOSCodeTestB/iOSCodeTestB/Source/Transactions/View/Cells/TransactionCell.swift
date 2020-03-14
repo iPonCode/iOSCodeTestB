@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TransactionCell {
-    func configure(id: Int, date: Date, amount: Double, fee: Double?, description: String?)
+    func configure(isHeader: Bool, id: Int, date: Date, amount: Double, fee: Double?, description: String?)
 }
 
 class TransactionCellImpl: UITableViewCell, TransactionCell {
@@ -28,7 +28,7 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
         super.awakeFromNib()
     }
     
-    func configure(id: Int, date: Date, amount: Double, fee: Double?, description: String?) {
+    func configure(isHeader: Bool, id: Int, date: Date, amount: Double, fee: Double?, description: String?) {
         
         let width:CGFloat = euroView.bounds.width
         euroView.layer.masksToBounds = true
@@ -51,6 +51,8 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
         totalLabel.text = String(format:"%.2f", amount + (fee ?? 0.0))
         
         descripitonLabel.text = setDescription(description)
+        
+        if isHeader { self.backgroundColor = .tertiarySystemGroupedBackground }
         
     }
     

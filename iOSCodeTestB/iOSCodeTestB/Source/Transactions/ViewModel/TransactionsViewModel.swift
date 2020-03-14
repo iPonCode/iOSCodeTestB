@@ -36,7 +36,7 @@ class TransactionsViewModelImpl: TransactionsViewModel {
         debugPrint("retrieveTransactions - Retrieving transactions from Webservice..")
 
         // TODO: move this to a Constants static struct
-        let url = "https://api.myjson.com/bins/1a30k8" //1a30k8//13a73a//j3tee//rmw3u//cvcay//16okye//1gsy8m
+        let url = "https://api.myjson.com/bins/1a30k8" //1a30k8//13a73a//j3tee//rmw3u//cvcay//16okye//1gsy8m//9fjla
         
         AF.request(url).responseJSON {[weak self] response in
             
