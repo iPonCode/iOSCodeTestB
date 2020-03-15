@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		058A703738BFD251D5A2B61B /* libPods-iOSCodeTestBTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E128E6315EBCC35AC008C69B /* libPods-iOSCodeTestBTests.a */; };
 		7ABAD62AC009817A755F4AA1 /* Pods_iOSCodeTestB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C93F578049C77984EED4F41 /* Pods_iOSCodeTestB.framework */; };
+		D0307B19241EB66D00F12005 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0307B18241EB66D00F12005 /* Constants.swift */; };
 		D05FC85D241876B300B347D8 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05FC85C241876B300B347D8 /* TransactionCell.xib */; };
 		D05FC85F2418778D00B347D8 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC85E2418778D00B347D8 /* TransactionCell.swift */; };
 		D05FC8612418851300B347D8 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC8602418851300B347D8 /* TransactionsViewModel.swift */; };
@@ -43,6 +44,7 @@
 		8F953A461902F440C4524CAD /* Pods-iOSCodeTestBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSCodeTestBTests.release.xcconfig"; path = "Target Support Files/Pods-iOSCodeTestBTests/Pods-iOSCodeTestBTests.release.xcconfig"; sourceTree = "<group>"; };
 		9C93F578049C77984EED4F41 /* Pods_iOSCodeTestB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSCodeTestB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DAD37D545AE14304BEAAF0 /* Pods-iOSCodeTestBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSCodeTestBTests.debug.xcconfig"; path = "Target Support Files/Pods-iOSCodeTestBTests/Pods-iOSCodeTestBTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D0307B18241EB66D00F12005 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D05FC85C241876B300B347D8 /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCell.xib; sourceTree = "<group>"; };
 		D05FC85E2418778D00B347D8 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		D05FC8602418851300B347D8 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				D0CFE46E241AE0EA00093A7D /* Utils */,
 				D05FC86624188C2C00B347D8 /* Models */,
+				D0307B18241EB66D00F12005 /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				D05FC85F2418778D00B347D8 /* TransactionCell.swift in Sources */,
 				D05FC8612418851300B347D8 /* TransactionsViewModel.swift in Sources */,
 				D05FC86824188C4600B347D8 /* Observable.swift in Sources */,
+				D0307B19241EB66D00F12005 /* Constants.swift in Sources */,
 				D0D7B3CF24183E38009C57F3 /* TransactionsViewController.swift in Sources */,
 				D0CFE470241AE15E00093A7D /* UIColor.swift in Sources */,
 				D0D7B3CB24183E38009C57F3 /* AppDelegate.swift in Sources */,

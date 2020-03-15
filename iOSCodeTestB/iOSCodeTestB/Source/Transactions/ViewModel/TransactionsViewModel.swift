@@ -23,6 +23,7 @@ class TransactionsViewModelImpl: TransactionsViewModel {
     var transactions = Observable<Transactions>([], thread: .main)
     var firstTransaction = Observable<Transaction>(nil, thread: .main)
     var localTransactions: [Transaction] = []
+    var endPoint: ApiConfig.EndPoint = .serverA
 
     private var filterText: String = "" {
         didSet {
@@ -34,9 +35,8 @@ class TransactionsViewModelImpl: TransactionsViewModel {
     func retrieveTransactions() {
         
         debugPrint("retrieveTransactions - Retrieving transactions from Webservice..")
-
-        // TODO: move this to a Constants static struct
-        let url = "https://api.myjson.com/bins/1a30k8"//197gmy
+        
+        let url = ApiConfig.baseURL + endPoint.rawValue
         
         AF.request(url).responseJSON {[weak self] response in
             
