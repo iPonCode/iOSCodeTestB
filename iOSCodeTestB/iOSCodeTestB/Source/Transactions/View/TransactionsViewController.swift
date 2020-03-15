@@ -30,11 +30,12 @@ class TransactionsViewController: UIViewController {
         configureView()
         bindViewModel()
         retrieveTransactions()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { // Wait a little bit for async webservice response
+        
+        // Wait a little bit for async webservice response
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
 //            debugPrint("viewDidload+1.5 - Dump viewController data stored:")
 //            dump(self.transactions)
-        }
+//        }
     
     }
 
@@ -46,14 +47,16 @@ class TransactionsViewController: UIViewController {
         tableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
         headerTableView.backgroundColor = .tertiarySystemGroupedBackground
         headerTableView.isScrollEnabled = false
-
+        
+        // Set default title, before call webservice
+        title = "Consultando transactiones …"
         
         // Configure searchBar
         searchBar.barStyle = .default
         searchBar.showsCancelButton = true
         showSearchBar()
         
-        // Wait a little bit to let user see the searchBar and hide animated in 4 secs
+        // Wait a little bit to let user itself be aware that there are a searchBar
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             self.hideSearchBar()
         }
