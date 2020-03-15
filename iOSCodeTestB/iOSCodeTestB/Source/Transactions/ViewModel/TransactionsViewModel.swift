@@ -36,7 +36,7 @@ class TransactionsViewModelImpl: TransactionsViewModel {
         debugPrint("retrieveTransactions - Retrieving transactions from Webservice..")
 
         // TODO: move this to a Constants static struct
-        let url = "https://api.myjson.com/bins/1a30k8" //1a30k8//13a73a//j3tee//rmw3u//cvcay//16okye//1gsy8m//9fjla
+        let url = "https://api.myjson.com/bins/1a30k8"//197gmy
         
         AF.request(url).responseJSON {[weak self] response in
             
@@ -47,11 +47,14 @@ class TransactionsViewModelImpl: TransactionsViewModel {
             
             //guard let `self` = self else{ return }
             
-            // Remove duplicates by id Clean items with wrong formatted dates, sort descending by date and
-            self?.transactions.value = transactions.removingDuplicates()
+            // 1 - Clean items with wrong formatted dates
+            // 2 - Sort descending by date and finally
+            // 3 - Remove duplicates by id (fixed in 1.0.2)
+            self?.transactions.value = transactions
                     .onlyDatedTransactions
-                .sorted(by: { $0.date! > $1.date! })
-                    //.unique
+                    .sorted(by: { $0.date! > $1.date! })
+                    .uniqueElements
+
             self?.firstTransaction.value = self?.transactions.value?.first
             self?.transactions.value = Array((self?.transactions.value?.dropFirst() ?? []))
             self?.localTransactions = self?.transactions.value ?? []

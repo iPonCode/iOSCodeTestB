@@ -22,18 +22,3 @@ extension Array where Element == Transaction {
     }
 
 }
-
-extension Array where Element: Hashable {
-
-    func removingDuplicates() -> [Element] {
-        
-        // Using a updateValue() method in a dictionary because return nil when item is new
-        var dictionary = [Element: Bool]()
-        return filter { dictionary.updateValue(true, forKey: $0) == nil }
-    }
-    
-    // Array struct instance methods needs mutating to update his values
-    mutating func removeDuplicates() {
-        self = self.removingDuplicates()
-    }
-}
