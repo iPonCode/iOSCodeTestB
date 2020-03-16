@@ -23,6 +23,7 @@ class TransactionsViewController: UIViewController {
     var viewModel: TransactionsViewModel = TransactionsViewModelImpl()
     var transactions: Transactions = Transactions() // this will be binded
     var firstTransaction: Transaction = Transaction()
+    var counters: Counters = Counters()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,10 +97,19 @@ class TransactionsViewController: UIViewController {
             guard let result = result else {
                 return
             }
-            // This will occur when viewmodel var update itself
             self?.firstTransaction = result
             self?.headerTableView.reloadData()
         })
+
+        // Start Listening counters
+        viewModel.counters.bind({ [weak self] (result) in
+            guard let result = result else {
+                return
+            }
+            self?.counters = result
+            self?.updateInfoSearchBar()
+        })
+
     }
 
     func retrieveTransactions() {
@@ -108,6 +118,19 @@ class TransactionsViewController: UIViewController {
 
     func updateTitle() {
         title = String(format: "Mostrando %d transacciones", transactions.count + 1)
+    }
+    
+    func updateInfoSearchBar() {
+
+        searchBarInfoLabel.text = String(format: "%d total recibidos | %d válidos | %d únicos", counters.total, counters.valid, counters.unique)
+        
+        let infoLabelText = searchBarInfoLabel.text ?? ""
+        if let txt = searchBar.searchTextField.text, !txt.isEmpty {
+            searchBarInfoLabel.text = infoLabelText + String(format: "\n< Aplicando filtro: \"%@\" > con %d resultados", txt, counters.filtered)
+        } else {
+            searchBarInfoLabel.text = infoLabelText + "\n< No hay filtros > Filtrar por descripción"
+        }
+
     }
     
 }
@@ -190,11 +213,6 @@ extension TransactionsViewController: UITableViewDataSource {
         }
         searchBar.resignFirstResponder()
         //bottomHeaderSeparator.isHidden = false
-        if let txt = searchBar.searchTextField.text, !txt.isEmpty {
-            searchBarInfoLabel.text = String(format: "< Aplicando filtro: \"%@\" >", txt)
-        } else {
-            searchBarInfoLabel.text = "< No hay filtros > Filtrar por descripción"
-        }
     }
     
 }
@@ -226,6 +244,7 @@ extension TransactionsViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        hideSearchBar()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -236,6 +255,10 @@ extension TransactionsViewController: UISearchBarDelegate {
         viewModel.searchText(searchText)
         if searchText.isEmpty {
             hideSearchBar()
+            updateInfoSearchBar()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+                searchBar.resignFirstResponder()
+            })
         }
      }
     
