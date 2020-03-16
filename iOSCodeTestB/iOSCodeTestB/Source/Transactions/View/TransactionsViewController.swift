@@ -51,6 +51,12 @@ class TransactionsViewController: UIViewController {
         // Set default title, before call webservice
         title = "Consultando transactiones …"
         
+        let navBarAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.systemOrange,
+            NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)
+        ]
+        navigationController?.navigationBar.titleTextAttributes = navBarAttributes
+
         // Configure searchBar
         searchBar.barStyle = .default
         searchBar.showsCancelButton = true
@@ -69,7 +75,6 @@ class TransactionsViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .tertiarySystemGroupedBackground
         view.backgroundColor = .tertiarySystemGroupedBackground
         self.view.backgroundColor = tableView.backgroundColor
-
         
     }
 
@@ -102,7 +107,7 @@ class TransactionsViewController: UIViewController {
     }
 
     func updateTitle() {
-        title = String(format: "mostrando %d Transacciones", transactions.count + 1)
+        title = String(format: "Mostrando %d transacciones", transactions.count + 1)
     }
     
 }
