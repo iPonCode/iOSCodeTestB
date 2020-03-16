@@ -67,7 +67,7 @@ struct Transaction: Codable, Hashable { // needed hashable to remove duplicates
         self.date = nil
         self.amount = 0.0
         self.fee = nil
-        self.description = "Espere, leyendo con tenido …"
+        self.description = "Espere, leyendo contenido …"
     }
     
     // needed to remove duplicates (by id)

@@ -24,6 +24,7 @@ class TransactionsViewModelImpl: TransactionsViewModel {
     var firstTransaction = Observable<Transaction>(nil, thread: .main)
     var localTransactions: [Transaction] = []
     var endPoint: ApiConfig.EndPoint = .serverA
+    var counters: Counters = Counters()
 
     private var filterText: String = "" {
         didSet {
@@ -47,17 +48,26 @@ class TransactionsViewModelImpl: TransactionsViewModel {
             
             //guard let `self` = self else{ return }
             
-            // 1 - Clean items with wrong formatted dates
-            // 2 - Sort descending by date and finally
-            // 3 - Remove duplicates by id (fixed in 1.0.2)
             self?.transactions.value = transactions
-                    .onlyDatedTransactions
-                    .sorted(by: { $0.date! > $1.date! })
-                    .uniqueElements
+            self?.counters.total = transactions.count
 
+            // 1 - Clean items with wrong formatted dates
+            self?.transactions.value = self?.transactions.value?.onlyDatedTransactions
+            self?.counters.valid = self?.transactions.value?.count ?? 0
+
+            // 2 - Sort descending by date and finally
+            self?.transactions.value = self?.transactions.value?.sorted(by: { $0.date! > $1.date! })
+
+            // 3 - Remove duplicates by id (fixed in 1.0.2)
+            self?.transactions.value = self?.transactions.value?.uniqueElements
+            self?.counters.unique = self?.transactions.value?.count ?? 0
+
+            // 4 - Move first element
             self?.firstTransaction.value = self?.transactions.value?.first
             self?.transactions.value = Array((self?.transactions.value?.dropFirst() ?? []))
             self?.localTransactions = self?.transactions.value ?? []
+            
+            dump(self?.counters)
 
         }
         
