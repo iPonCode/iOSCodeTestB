@@ -13,9 +13,12 @@ protocol TransactionsViewModel {
     var transactions: Observable<Transactions> {get}
     var firstTransaction: Observable<Transaction> {get}
     var counters: Observable<Counters> {get}
+    
 
     func retrieveTransactions()
     func searchText(_ text: String)
+    func getCurrentEndPoint() -> ApiConfig.EndPoint
+    func setCurrentEndPoint(_ endPoint: ApiConfig.EndPoint)
 }
 
 // Here the business logic
@@ -25,11 +28,16 @@ class TransactionsViewModelImpl: TransactionsViewModel {
     var firstTransaction = Observable<Transaction>(nil, thread: .main)
     var counters = Observable<Counters>(Counters(), thread: .main)
     var localTransactions: [Transaction] = []
-    var endPoint: ApiConfig.EndPoint = .serverA
 
     private var filterText: String = "" {
         didSet {
             updateTransactionsWithFilter()
+        }
+    }
+    
+    private var endPoint: ApiConfig.EndPoint = .serverA {
+        didSet {
+            retrieveTransactions()
         }
     }
 
@@ -39,7 +47,7 @@ class TransactionsViewModelImpl: TransactionsViewModel {
         debugPrint("retrieveTransactions - Retrieving transactions from Webservice..")
         
         let url = ApiConfig.baseURL + endPoint.rawValue
-        
+
         AF.request(url).responseJSON {[weak self] response in
             
             guard let serverData = response.data, let transactions = try? JSONDecoder().decode(Transactions.self, from: serverData) else {
@@ -67,6 +75,9 @@ class TransactionsViewModelImpl: TransactionsViewModel {
             self?.firstTransaction.value = self?.transactions.value?.first
             self?.transactions.value = Array((self?.transactions.value?.dropFirst() ?? []))
             self?.localTransactions = self?.transactions.value ?? []
+            
+            // 5 - Update filter, needed if endPoint changes
+            self?.updateTransactionsWithFilter()
         }
         
     }
@@ -86,6 +97,14 @@ class TransactionsViewModelImpl: TransactionsViewModel {
     
     func searchText(_ text: String) {
         filterText = text
+    }
+    
+    func setCurrentEndPoint(_ endPoint: ApiConfig.EndPoint) {
+        self.endPoint = endPoint
+    }
+    
+    func getCurrentEndPoint() -> ApiConfig.EndPoint {
+        return endPoint
     }
 
 }

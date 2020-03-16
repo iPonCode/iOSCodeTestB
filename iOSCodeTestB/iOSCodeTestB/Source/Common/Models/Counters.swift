@@ -15,12 +15,10 @@ struct Counters {
     var filtered: Int
     
     init() {
-        
         self.total = 0
         self.valid = 0
         self.unique = 0
         self.filtered = 0
-        
         return
     }
 }
