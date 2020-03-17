@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		058A703738BFD251D5A2B61B /* libPods-iOSCodeTestBTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E128E6315EBCC35AC008C69B /* libPods-iOSCodeTestBTests.a */; };
 		7ABAD62AC009817A755F4AA1 /* Pods_iOSCodeTestB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C93F578049C77984EED4F41 /* Pods_iOSCodeTestB.framework */; };
+		D0307B19241EB66D00F12005 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0307B18241EB66D00F12005 /* Constants.swift */; };
 		D05FC85D241876B300B347D8 /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D05FC85C241876B300B347D8 /* TransactionCell.xib */; };
 		D05FC85F2418778D00B347D8 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC85E2418778D00B347D8 /* TransactionCell.swift */; };
 		D05FC8612418851300B347D8 /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05FC8602418851300B347D8 /* TransactionsViewModel.swift */; };
@@ -26,6 +27,7 @@
 		D0D7B3D424183E40009C57F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0D7B3D324183E40009C57F3 /* Assets.xcassets */; };
 		D0D7B3D724183E40009C57F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D7B3D524183E40009C57F3 /* LaunchScreen.storyboard */; };
 		D0D7B3E224183E41009C57F3 /* iOSCodeTestBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D7B3E124183E41009C57F3 /* iOSCodeTestBTests.swift */; };
+		D0FFC176241F13CF00D6A3AE /* Counters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FFC175241F13CF00D6A3AE /* Counters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,7 @@
 		8F953A461902F440C4524CAD /* Pods-iOSCodeTestBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSCodeTestBTests.release.xcconfig"; path = "Target Support Files/Pods-iOSCodeTestBTests/Pods-iOSCodeTestBTests.release.xcconfig"; sourceTree = "<group>"; };
 		9C93F578049C77984EED4F41 /* Pods_iOSCodeTestB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSCodeTestB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DAD37D545AE14304BEAAF0 /* Pods-iOSCodeTestBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSCodeTestBTests.debug.xcconfig"; path = "Target Support Files/Pods-iOSCodeTestBTests/Pods-iOSCodeTestBTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D0307B18241EB66D00F12005 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D05FC85C241876B300B347D8 /* TransactionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionCell.xib; sourceTree = "<group>"; };
 		D05FC85E2418778D00B347D8 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		D05FC8602418851300B347D8 /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		D0D7B3DD24183E41009C57F3 /* iOSCodeTestBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSCodeTestBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D7B3E124183E41009C57F3 /* iOSCodeTestBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSCodeTestBTests.swift; sourceTree = "<group>"; };
 		D0D7B3E324183E41009C57F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0FFC175241F13CF00D6A3AE /* Counters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counters.swift; sourceTree = "<group>"; };
 		E128E6315EBCC35AC008C69B /* libPods-iOSCodeTestBTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSCodeTestBTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA67B7B575A4AA5B33BABD92 /* Pods-iOSCodeTestB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSCodeTestB.debug.xcconfig"; path = "Target Support Files/Pods-iOSCodeTestB/Pods-iOSCodeTestB.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +117,7 @@
 			children = (
 				D0CFE46E241AE0EA00093A7D /* Utils */,
 				D05FC86624188C2C00B347D8 /* Models */,
+				D0307B18241EB66D00F12005 /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				D05FC86724188C4600B347D8 /* Observable.swift */,
+				D0FFC175241F13CF00D6A3AE /* Counters.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -417,8 +423,10 @@
 				D05FC85F2418778D00B347D8 /* TransactionCell.swift in Sources */,
 				D05FC8612418851300B347D8 /* TransactionsViewModel.swift in Sources */,
 				D05FC86824188C4600B347D8 /* Observable.swift in Sources */,
+				D0307B19241EB66D00F12005 /* Constants.swift in Sources */,
 				D0D7B3CF24183E38009C57F3 /* TransactionsViewController.swift in Sources */,
 				D0CFE470241AE15E00093A7D /* UIColor.swift in Sources */,
+				D0FFC176241F13CF00D6A3AE /* Counters.swift in Sources */,
 				D0D7B3CB24183E38009C57F3 /* AppDelegate.swift in Sources */,
 				D0CFE472241AEFB000093A7D /* Date.swift in Sources */,
 				D0D7B3CD24183E38009C57F3 /* SceneDelegate.swift in Sources */,

@@ -18,11 +18,13 @@ class TransactionsViewController: UIViewController {
     @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var showSearchBarInfoConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomHeaderSeparator: UIView!
+    @IBOutlet weak var leftSeparator: UIView!
     @IBOutlet weak var searchBarInfoLabel: UILabel!
     
     var viewModel: TransactionsViewModel = TransactionsViewModelImpl()
     var transactions: Transactions = Transactions() // this will be binded
     var firstTransaction: Transaction = Transaction()
+    var counters: Counters = Counters()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,30 +32,50 @@ class TransactionsViewController: UIViewController {
         configureView()
         bindViewModel()
         retrieveTransactions()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { // Wait a little bit for async webservice response
+        
+        // Wait a little bit for async webservice response
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
 //            debugPrint("viewDidload+1.5 - Dump viewController data stored:")
 //            dump(self.transactions)
-        }
+//        }
     
     }
 
     func configureView() {
         
+        // Set default title, before call webservice
+        title = "Consultando transactiones …"
+        
+        // Configure navigationBar
+        let navBarAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.systemOrange,
+            NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)
+        ]
+        navigationController?.navigationBar.titleTextAttributes = navBarAttributes
+        
+        let serverButton = UIBarButtonItem(image: #imageLiteral(resourceName: "endPointB"), style: .plain, target: self, action: #selector(serverButtonTapped))
+        navigationItem.setLeftBarButton(serverButton, animated: true)
+        
+        bottomHeaderSeparator.backgroundColor = .borderCell
+        leftSeparator.backgroundColor = .borderCell
+        
         // Register cells
         headerTableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
+        tableView.isScrollEnabled = true
+        tableView.separatorStyle = .singleLine
         
         tableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
         headerTableView.backgroundColor = .tertiarySystemGroupedBackground
         headerTableView.isScrollEnabled = false
-
+        headerTableView.separatorStyle = .none
+        
         
         // Configure searchBar
         searchBar.barStyle = .default
         searchBar.showsCancelButton = true
         showSearchBar()
         
-        // Wait a little bit to let user see the searchBar and hide animated in 4 secs
+        // Wait a little bit to let user itself be aware that there are a searchBar
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             self.hideSearchBar()
         }
@@ -64,9 +86,9 @@ class TransactionsViewController: UIViewController {
         searchBarInfoLabel.backgroundColor = .tertiarySystemGroupedBackground
         
         navigationController?.navigationBar.backgroundColor = .tertiarySystemGroupedBackground
+        navigationController?.navigationBar.barStyle = .default
         view.backgroundColor = .tertiarySystemGroupedBackground
         self.view.backgroundColor = tableView.backgroundColor
-
         
     }
 
@@ -88,10 +110,19 @@ class TransactionsViewController: UIViewController {
             guard let result = result else {
                 return
             }
-            // This will occur when viewmodel var update itself
             self?.firstTransaction = result
             self?.headerTableView.reloadData()
         })
+
+        // Start Listening counters
+        viewModel.counters.bind({ [weak self] (result) in
+            guard let result = result else {
+                return
+            }
+            self?.counters = result
+            self?.updateInfoSearchBar()
+        })
+
     }
 
     func retrieveTransactions() {
@@ -99,7 +130,53 @@ class TransactionsViewController: UIViewController {
     }
 
     func updateTitle() {
-        title = String(format: "mostrando %d Transacciones", transactions.count + 1)
+        var endPointName = ""
+        switch viewModel.getCurrentEndPoint() {
+            case .serverA:
+                navigationItem.leftBarButtonItem?.image = #imageLiteral(resourceName: "endPointB")
+                endPointName = "A"
+            case .serverB:
+                navigationItem.leftBarButtonItem?.image = #imageLiteral(resourceName: "endPointA")
+                endPointName = "B"
+        }
+        title = String(format: "Mostrando %d transacciones (%@)", transactions.count + 1, endPointName)
+    }
+    
+    func updateInfoSearchBar() {
+
+        searchBarInfoLabel.text = String(format: "%d total recibidos | %d válidos | %d únicos", counters.total, counters.valid, counters.unique)
+        
+        let infoLabelText = searchBarInfoLabel.text ?? ""
+        if let txt = searchBar.searchTextField.text, !txt.isEmpty {
+            searchBarInfoLabel.text = infoLabelText + String(format: "\n< Aplicando filtro: \"%@\" > con %d resultados", txt, counters.filtered)
+        } else {
+            searchBarInfoLabel.text = infoLabelText + "\n< No hay filtros definidos > Filtrar por descripción"
+        }
+
+    }
+
+    @objc func serverButtonTapped() {
+        
+        title = "Actualizando transactiones …"
+        
+        clearTables() // (only for visual effect)
+        
+        // Change endPoint (and reload, aplying filters, etc..)
+        switch viewModel.getCurrentEndPoint() {
+            
+            case .serverA:
+                viewModel.setCurrentEndPoint(.serverB)
+
+            case .serverB:
+                viewModel.setCurrentEndPoint(.serverA)
+        }
+    }
+    
+    fileprivate func clearTables() {
+        firstTransaction = Transaction()
+        headerTableView.reloadData()
+        transactions = []
+        tableView.reloadData()
     }
     
 }
@@ -111,7 +188,7 @@ extension TransactionsViewController: UITableViewDataSource {
     // tableView (transactions) and headerTableView (firstTransaction)
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72 // provisional value
+        return 72
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -155,8 +232,6 @@ extension TransactionsViewController: UITableViewDataSource {
                                amount: firstTransaction.amount,
                                fee: firstTransaction.fee ?? nil,
                                description: firstTransaction.description ?? nil)
-                debugPrint("datasource headerTableView - Dump viewController firstTransaction stored:")
-                dump(firstTransaction)
             }
 
             return cell
@@ -171,7 +246,6 @@ extension TransactionsViewController: UITableViewDataSource {
         UIView.animate(withDuration: 0.35) {
             self.view.layoutIfNeeded()
         }
-        //bottomHeaderSeparator.isHidden = true
     }
     
     fileprivate func hideSearchBar() {
@@ -181,12 +255,6 @@ extension TransactionsViewController: UITableViewDataSource {
             self.view.layoutIfNeeded()
         }
         searchBar.resignFirstResponder()
-        //bottomHeaderSeparator.isHidden = false
-        if let txt = searchBar.searchTextField.text, !txt.isEmpty {
-            searchBarInfoLabel.text = String(format: "< Aplicando filtro: \"%@\" >", txt)
-        } else {
-            searchBarInfoLabel.text = "< No hay filtros > Filtrar por descripción"
-        }
     }
     
 }
@@ -218,6 +286,7 @@ extension TransactionsViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        hideSearchBar()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -228,6 +297,10 @@ extension TransactionsViewController: UISearchBarDelegate {
         viewModel.searchText(searchText)
         if searchText.isEmpty {
             hideSearchBar()
+            updateInfoSearchBar()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+                searchBar.resignFirstResponder()
+            })
         }
      }
     
@@ -244,5 +317,3 @@ extension TransactionsViewController: UIScrollViewDelegate {
     }
 
 }
-
-
