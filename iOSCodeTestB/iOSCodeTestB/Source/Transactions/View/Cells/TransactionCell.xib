@@ -15,17 +15,84 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fugiat elit cupidatat ipsum ad Lorem aliquip." lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNf-Le-JBa" userLabel="Descripction">
-                        <rect key="frame" x="12" y="4" width="304" height="41"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHH-3C-Aav" userLabel="Left Separator">
+                        <rect key="frame" x="0.0" y="0.0" width="8" height="72"/>
+                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="RD7-8q-zQY"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29 Febrero 2020 a las 23:59" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEV-Is-5CW" userLabel="Date">
+                        <rect key="frame" x="16" y="8" width="150" height="13.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="highlightedColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="última" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBi-Vi-Xv7" userLabel="Ultima">
+                        <rect key="frame" x="174" y="8" width="50" height="13.5"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="naB-fM-Xc8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="RsJ-AK-GWN" userLabel="Fee Stack View">
+                        <rect key="frame" x="16" y="23.5" width="186" height="13.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fS3-0G-lSg" userLabel="Fee">
+                                <rect key="frame" x="0.0" y="0.0" width="94" height="13.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comisión:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWm-8B-l3V" userLabel="Fee Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="13.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                        <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="highlightedColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-35.77" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSD-Ok-ndh" userLabel="Fee amount">
+                                        <rect key="frame" x="54" y="0.0" width="40" height="13.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="WjP-0P-4Rb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="highlightedColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OlD-2h-GrI" userLabel="Amount">
+                                <rect key="frame" x="98" y="0.0" width="88" height="13.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Importe:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofw-Cq-kdm" userLabel="Amount Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="44.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                        <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-168.88" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLb-VK-wdy" userLabel="Amount amount">
+                                        <rect key="frame" x="46.5" y="0.0" width="41.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234.00" textAlignment="right" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kux-Qo-7iD" userLabel="Total">
+                        <rect key="frame" x="289" y="8" width="84.5" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="cM4-CS-ko0"/>
+                            <constraint firstAttribute="width" secondItem="kux-Qo-7iD" secondAttribute="height" multiplier="13:4" id="mAJ-v3-ajE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <color key="highlightedColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Cp-en-dgR" userLabel="Total View">
-                        <rect key="frame" x="379.5" y="41.5" width="26.5" height="26.5"/>
+                        <rect key="frame" x="377.5" y="6.5" width="28.5" height="29"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyH-3q-Nvw" userLabel="Euro Symbol">
-                                <rect key="frame" x="0.0" y="0.0" width="26.5" height="26.5"/>
+                                <rect key="frame" x="1" y="1.5" width="26.5" height="26.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yyH-3q-Nvw" secondAttribute="height" multiplier="1:1" id="KkV-RF-ow5"/>
                                 </constraints>
@@ -38,95 +105,35 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="0Cp-en-dgR" secondAttribute="height" multiplier="1:1" id="6b0-m9-v4h"/>
                             <constraint firstItem="yyH-3q-Nvw" firstAttribute="centerY" secondItem="0Cp-en-dgR" secondAttribute="centerY" id="6fu-s0-eQy"/>
-                            <constraint firstAttribute="bottom" secondItem="yyH-3q-Nvw" secondAttribute="bottom" id="bh3-wG-kJo"/>
                             <constraint firstItem="yyH-3q-Nvw" firstAttribute="centerX" secondItem="0Cp-en-dgR" secondAttribute="centerX" id="mPd-ax-t2y"/>
                         </constraints>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RsJ-AK-GWN" userLabel="Fee Stack View">
-                        <rect key="frame" x="320" y="8" width="0.0" height="27"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fS3-0G-lSg" userLabel="Labels">
-                                <rect key="frame" x="0.0" y="0.0" width="52" height="27"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comisión:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wWm-8B-l3V" userLabel="Fee Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="52" height="13.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                        <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="highlightedColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Importe:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ofw-Cq-kdm" userLabel="Amount Label">
-                                        <rect key="frame" x="0.0" y="13.5" width="52" height="13.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                        <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="KtE-1e-zuc"/>
-                                </constraints>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OlD-2h-GrI" userLabel="Amounts">
-                                <rect key="frame" x="-45" y="0.0" width="45" height="27"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-35.77" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSD-Ok-ndh" userLabel="Fee amount">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="13.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="highlightedColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-168.88" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLb-VK-wdy" userLabel="Amount amount">
-                                        <rect key="frame" x="0.0" y="13.5" width="45" height="13.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="M5R-Tr-u9O"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="width" id="AhZ-JL-lJe"/>
-                        </constraints>
-                    </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29 Febrero 2020 a las 23:59" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEV-Is-5CW" userLabel="Date">
-                        <rect key="frame" x="221.5" y="50.5" width="150" height="13.5"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fugiat elit cupidatat ipsum ad Lorem aliquip." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNf-Le-JBa" userLabel="Descripction">
+                        <rect key="frame" x="16" y="43.5" width="390" height="20.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="highlightedColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234.00" textAlignment="right" lineBreakMode="clip" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kux-Qo-7iD" userLabel="Total">
-                        <rect key="frame" x="328" y="8" width="78" height="24"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="78" id="4L4-Kf-Oth"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <color key="highlightedColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHH-3C-Aav" userLabel="Left Separator">
-                        <rect key="frame" x="0.0" y="0.0" width="4" height="72"/>
-                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="4" id="RD7-8q-zQY"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="eNf-Le-JBa" secondAttribute="trailing" constant="8" id="2AI-d1-VFz"/>
                     <constraint firstAttribute="bottom" secondItem="HHH-3C-Aav" secondAttribute="bottom" id="62l-EW-5Qe"/>
-                    <constraint firstItem="eNf-Le-JBa" firstAttribute="top" secondItem="uyi-JV-Njy" secondAttribute="top" constant="4" id="AJz-Ke-Yd8"/>
+                    <constraint firstItem="0Cp-en-dgR" firstAttribute="height" secondItem="kux-Qo-7iD" secondAttribute="height" multiplier="1.10417" id="HwM-TC-Hza"/>
                     <constraint firstItem="eNf-Le-JBa" firstAttribute="leading" secondItem="HHH-3C-Aav" secondAttribute="trailing" constant="8" id="IBP-1R-6RS"/>
-                    <constraint firstItem="kux-Qo-7iD" firstAttribute="leading" secondItem="RsJ-AK-GWN" secondAttribute="trailing" constant="8" id="ItT-U5-zMf"/>
-                    <constraint firstItem="RsJ-AK-GWN" firstAttribute="leading" secondItem="eNf-Le-JBa" secondAttribute="trailing" constant="4" id="Kmd-nF-ru3"/>
-                    <constraint firstItem="kux-Qo-7iD" firstAttribute="top" secondItem="RsJ-AK-GWN" secondAttribute="top" id="MyQ-qz-4wd"/>
-                    <constraint firstAttribute="bottom" secondItem="iEV-Is-5CW" secondAttribute="bottom" constant="8" id="SE0-fj-MdT"/>
+                    <constraint firstItem="iEV-Is-5CW" firstAttribute="top" secondItem="uyi-JV-Njy" secondAttribute="top" constant="8" id="ICz-V7-IzG"/>
+                    <constraint firstItem="RsJ-AK-GWN" firstAttribute="leading" secondItem="HHH-3C-Aav" secondAttribute="trailing" constant="8" id="Lzg-7f-hZG"/>
+                    <constraint firstItem="eNf-Le-JBa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RsJ-AK-GWN" secondAttribute="bottom" constant="4" id="OhN-nc-ANQ"/>
+                    <constraint firstItem="oBi-Vi-Xv7" firstAttribute="leading" secondItem="iEV-Is-5CW" secondAttribute="trailing" constant="8" id="SLj-4q-VU2"/>
                     <constraint firstAttribute="trailing" secondItem="0Cp-en-dgR" secondAttribute="trailing" constant="8" id="WAw-YO-HLX"/>
-                    <constraint firstAttribute="bottom" secondItem="0Cp-en-dgR" secondAttribute="bottom" constant="4" id="WmV-P9-JH6"/>
-                    <constraint firstAttribute="trailing" secondItem="kux-Qo-7iD" secondAttribute="trailing" constant="8" id="d3j-ST-POC"/>
+                    <constraint firstItem="0Cp-en-dgR" firstAttribute="centerY" secondItem="kux-Qo-7iD" secondAttribute="centerY" id="ceI-eN-6Rl"/>
+                    <constraint firstAttribute="bottom" secondItem="eNf-Le-JBa" secondAttribute="bottom" constant="8" id="iX4-pa-rs0"/>
+                    <constraint firstItem="kux-Qo-7iD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oBi-Vi-Xv7" secondAttribute="trailing" constant="4" id="kUe-cA-vJ1"/>
+                    <constraint firstItem="RsJ-AK-GWN" firstAttribute="top" secondItem="iEV-Is-5CW" secondAttribute="bottom" constant="2" id="l3S-fA-giY"/>
+                    <constraint firstItem="0Cp-en-dgR" firstAttribute="leading" secondItem="kux-Qo-7iD" secondAttribute="trailing" constant="4" id="lft-lc-YCJ"/>
                     <constraint firstItem="HHH-3C-Aav" firstAttribute="top" secondItem="uyi-JV-Njy" secondAttribute="top" id="rxV-2e-FU9"/>
-                    <constraint firstItem="0Cp-en-dgR" firstAttribute="leading" secondItem="iEV-Is-5CW" secondAttribute="trailing" constant="8" id="rzO-IM-xwD"/>
-                    <constraint firstItem="iEV-Is-5CW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="RsJ-AK-GWN" secondAttribute="bottom" constant="8" id="tu0-kn-WXq"/>
-                    <constraint firstItem="RsJ-AK-GWN" firstAttribute="top" secondItem="uyi-JV-Njy" secondAttribute="top" constant="8" id="vlC-ii-VXX"/>
+                    <constraint firstItem="kux-Qo-7iD" firstAttribute="top" secondItem="iEV-Is-5CW" secondAttribute="top" id="vQ8-zy-NM5"/>
+                    <constraint firstItem="iEV-Is-5CW" firstAttribute="leading" secondItem="HHH-3C-Aav" secondAttribute="trailing" constant="8" id="vz9-px-U29"/>
+                    <constraint firstItem="oBi-Vi-Xv7" firstAttribute="top" secondItem="iEV-Is-5CW" secondAttribute="top" id="wUw-Hs-9kc"/>
                     <constraint firstItem="HHH-3C-Aav" firstAttribute="leading" secondItem="uyi-JV-Njy" secondAttribute="leading" id="wYN-du-D0w"/>
                 </constraints>
             </tableViewCellContentView>
@@ -137,9 +144,10 @@
                 <outlet property="descripitonLabel" destination="eNf-Le-JBa" id="j0P-Sw-5qQ"/>
                 <outlet property="euroView" destination="0Cp-en-dgR" id="7PS-i6-OIN"/>
                 <outlet property="feeLabel" destination="kSD-Ok-ndh" id="K36-q3-VDf"/>
+                <outlet property="lastLabel" destination="oBi-Vi-Xv7" id="6A8-VX-Yy9"/>
                 <outlet property="leftSeparator" destination="HHH-3C-Aav" id="BV7-eC-YPp"/>
+                <outlet property="leftSeparatorConstraint" destination="RD7-8q-zQY" id="ffg-Ff-2AT"/>
                 <outlet property="stackFee" destination="RsJ-AK-GWN" id="erx-lI-QFs"/>
-                <outlet property="stackFeeWidthConstraint" destination="AhZ-JL-lJe" id="SS1-cI-Li2"/>
                 <outlet property="totalLabel" destination="kux-Qo-7iD" id="avS-mK-8F8"/>
             </connections>
             <point key="canvasLocation" x="205.79710144927537" y="75"/>

@@ -18,6 +18,7 @@ class TransactionsViewController: UIViewController {
     @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var showSearchBarInfoConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomHeaderSeparator: UIView!
+    @IBOutlet weak var leftSeparator: UIView!
     @IBOutlet weak var searchBarInfoLabel: UILabel!
     
     var viewModel: TransactionsViewModel = TransactionsViewModelImpl()
@@ -55,12 +56,19 @@ class TransactionsViewController: UIViewController {
         let serverButton = UIBarButtonItem(image: #imageLiteral(resourceName: "endPointB"), style: .plain, target: self, action: #selector(serverButtonTapped))
         navigationItem.setLeftBarButton(serverButton, animated: true)
         
+        bottomHeaderSeparator.backgroundColor = .borderCell
+        leftSeparator.backgroundColor = .borderCell
+        
         // Register cells
         headerTableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
+        tableView.isScrollEnabled = true
+        tableView.separatorStyle = .singleLine
         
         tableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
         headerTableView.backgroundColor = .tertiarySystemGroupedBackground
         headerTableView.isScrollEnabled = false
+        headerTableView.separatorStyle = .none
+        
         
         // Configure searchBar
         searchBar.barStyle = .default
@@ -152,17 +160,15 @@ class TransactionsViewController: UIViewController {
         title = "Actualizando transactiones …"
         
         clearTables() // (only for visual effect)
-
         
         // Change endPoint (and reload, aplying filters, etc..)
         switch viewModel.getCurrentEndPoint() {
+            
             case .serverA:
                 viewModel.setCurrentEndPoint(.serverB)
-                navigationController?.navigationBar.topItem?.leftBarButtonItem?.title = "A"
 
             case .serverB:
                 viewModel.setCurrentEndPoint(.serverA)
-                navigationController?.navigationBar.topItem?.leftBarButtonItem?.title = "B"
         }
     }
     
