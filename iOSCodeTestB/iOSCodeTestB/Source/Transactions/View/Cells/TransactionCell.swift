@@ -20,8 +20,9 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
     @IBOutlet weak var feeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var stackFee: UIStackView!
-    @IBOutlet weak var stackFeeWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var leftSeparator: UIView!
+    @IBOutlet weak var leftSeparatorConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lastLabel: UILabel!
     
     // This occurs when the xib is ready
     override func awakeFromNib() {
@@ -30,38 +31,49 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
     
     func configure(isHeader: Bool, id: Int, date: Date, amount: Double, fee: Double?, description: String?) {
         
-        let width:CGFloat = euroView.bounds.width
+        if isHeader {
+            self.backgroundColor = .tertiarySystemGroupedBackground
+            leftSeparatorConstraint.constant = 2.0
+            leftSeparator.backgroundColor = .borderCell
+            lastLabel.backgroundColor = .backgroundLast
+        } else {
+            contentView.layer.masksToBounds = true
+            contentView.layer.cornerRadius = 8
+            lastLabel.isHidden = true
+        }
+        
         euroView.layer.masksToBounds = true
-        euroView.layer.cornerRadius = width/3
+        euroView.layer.cornerRadius = 10
+
+        lastLabel.layer.masksToBounds = true
+        lastLabel.layer.cornerRadius = 4
 
         feeLabel.layer.masksToBounds = true
         feeLabel.layer.cornerRadius = 4
 
         totalLabel.layer.masksToBounds = true
-        totalLabel.layer.cornerRadius = 6
-        totalLabel.backgroundColor = UIColor.bgTotalColor
+        totalLabel.layer.cornerRadius = 8
+        totalLabel.backgroundColor = .backgroundTotal
 
         fee != nil ? hasFee(true) : hasFee(false)
-        amount < 0.0 ? setExpenseColor() : setIncomeColor()
+        amount < 0.0 ? setExpenseColor(isHeader) : setIncomeColor(isHeader)
         
         // Set cell info
         dateLabel.text = setDate(date)
         amountLabel.text = String(amount)
         feeLabel.text = String(fee ?? 0.0)
         totalLabel.text = String(format:"%.2f", amount + (fee ?? 0.0))
-        
         descripitonLabel.text = setDescription(description)
-        
-        if isHeader { self.backgroundColor = .tertiarySystemGroupedBackground }
         
     }
     
     private func hasFee(_ has: Bool) {
+        
         if has {
-            stackFeeWidthConstraint.constant = 100.0
-            feeLabel.backgroundColor = UIColor.bgStackFeeColor
+            stackFee.isHidden = false
+            feeLabel.backgroundColor = UIColor.backgroundFee
         } else {
-            stackFeeWidthConstraint.constant = 0.0
+            stackFee.isHidden = true
         }
     }
     
@@ -93,14 +105,22 @@ class TransactionCellImpl: UITableViewCell, TransactionCell {
         }
     }
     
-    private func setIncomeColor() {
-        euroView.backgroundColor = UIColor.incomeColor
-        leftSeparator.backgroundColor = UIColor.incomeColor
+    private func setIncomeColor(_ isHeader: Bool) {
+        
+        euroView.backgroundColor = UIColor.distinctiveIncome
+        if !isHeader{
+            leftSeparator.backgroundColor = .distinctiveIncome
+            contentView.backgroundColor = .backgroundCellIncome
+        }
     }
     
-    private func setExpenseColor() {
-        euroView.backgroundColor = UIColor.expenseColor
-        leftSeparator.backgroundColor = UIColor.expenseColor
+    private func setExpenseColor(_ isHeader: Bool) {
+        
+        euroView.backgroundColor = UIColor.distinctiveExpense
+        if !isHeader {
+            leftSeparator.backgroundColor = .distinctiveExpense
+            contentView.backgroundColor = .backgroundCellExpense
+        }
     }
     
 }
