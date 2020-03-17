@@ -42,6 +42,19 @@ class TransactionsViewController: UIViewController {
 
     func configureView() {
         
+        // Set default title, before call webservice
+        title = "Consultando transactiones …"
+        
+        // Configure navigationBar
+        let navBarAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.systemOrange,
+            NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)
+        ]
+        navigationController?.navigationBar.titleTextAttributes = navBarAttributes
+        
+        let serverButton = UIBarButtonItem(image: #imageLiteral(resourceName: "endPointB"), style: .plain, target: self, action: #selector(serverButtonTapped))
+        navigationItem.setLeftBarButton(serverButton, animated: true)
+        
         // Register cells
         headerTableView.register(UINib(nibName: TransactionsViewController.TransactionCellIdAndNibName, bundle: nil), forCellReuseIdentifier: TransactionsViewController.TransactionCellIdAndNibName)
         
@@ -49,15 +62,6 @@ class TransactionsViewController: UIViewController {
         headerTableView.backgroundColor = .tertiarySystemGroupedBackground
         headerTableView.isScrollEnabled = false
         
-        // Set default title, before call webservice
-        title = "Consultando transactiones …"
-        
-        let navBarAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.systemOrange,
-            NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline)
-        ]
-        navigationController?.navigationBar.titleTextAttributes = navBarAttributes
-
         // Configure searchBar
         searchBar.barStyle = .default
         searchBar.showsCancelButton = true
@@ -74,6 +78,7 @@ class TransactionsViewController: UIViewController {
         searchBarInfoLabel.backgroundColor = .tertiarySystemGroupedBackground
         
         navigationController?.navigationBar.backgroundColor = .tertiarySystemGroupedBackground
+        navigationController?.navigationBar.barStyle = .default
         view.backgroundColor = .tertiarySystemGroupedBackground
         self.view.backgroundColor = tableView.backgroundColor
         
@@ -117,7 +122,16 @@ class TransactionsViewController: UIViewController {
     }
 
     func updateTitle() {
-        title = String(format: "Mostrando %d transacciones", transactions.count + 1)
+        var endPointName = ""
+        switch viewModel.getCurrentEndPoint() {
+            case .serverA:
+                navigationItem.leftBarButtonItem?.image = #imageLiteral(resourceName: "endPointB")
+                endPointName = "A"
+            case .serverB:
+                navigationItem.leftBarButtonItem?.image = #imageLiteral(resourceName: "endPointA")
+                endPointName = "B"
+        }
+        title = String(format: "Mostrando %d transacciones (%@)", transactions.count + 1, endPointName)
     }
     
     func updateInfoSearchBar() {
@@ -128,9 +142,35 @@ class TransactionsViewController: UIViewController {
         if let txt = searchBar.searchTextField.text, !txt.isEmpty {
             searchBarInfoLabel.text = infoLabelText + String(format: "\n< Aplicando filtro: \"%@\" > con %d resultados", txt, counters.filtered)
         } else {
-            searchBarInfoLabel.text = infoLabelText + "\n< No hay filtros > Filtrar por descripción"
+            searchBarInfoLabel.text = infoLabelText + "\n< No hay filtros definidos > Filtrar por descripción"
         }
 
+    }
+
+    @objc func serverButtonTapped() {
+        
+        title = "Actualizando transactiones …"
+        
+        clearTables() // (only for visual effect)
+
+        
+        // Change endPoint (and reload, aplying filters, etc..)
+        switch viewModel.getCurrentEndPoint() {
+            case .serverA:
+                viewModel.setCurrentEndPoint(.serverB)
+                navigationController?.navigationBar.topItem?.leftBarButtonItem?.title = "A"
+
+            case .serverB:
+                viewModel.setCurrentEndPoint(.serverA)
+                navigationController?.navigationBar.topItem?.leftBarButtonItem?.title = "B"
+        }
+    }
+    
+    fileprivate func clearTables() {
+        firstTransaction = Transaction()
+        headerTableView.reloadData()
+        transactions = []
+        tableView.reloadData()
     }
     
 }
@@ -142,7 +182,7 @@ extension TransactionsViewController: UITableViewDataSource {
     // tableView (transactions) and headerTableView (firstTransaction)
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72 // provisional value
+        return 72
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -186,8 +226,6 @@ extension TransactionsViewController: UITableViewDataSource {
                                amount: firstTransaction.amount,
                                fee: firstTransaction.fee ?? nil,
                                description: firstTransaction.description ?? nil)
-                debugPrint("datasource headerTableView - Dump viewController firstTransaction stored:")
-                dump(firstTransaction)
             }
 
             return cell
@@ -202,7 +240,6 @@ extension TransactionsViewController: UITableViewDataSource {
         UIView.animate(withDuration: 0.35) {
             self.view.layoutIfNeeded()
         }
-        //bottomHeaderSeparator.isHidden = true
     }
     
     fileprivate func hideSearchBar() {
@@ -212,7 +249,6 @@ extension TransactionsViewController: UITableViewDataSource {
             self.view.layoutIfNeeded()
         }
         searchBar.resignFirstResponder()
-        //bottomHeaderSeparator.isHidden = false
     }
     
 }
@@ -275,5 +311,3 @@ extension TransactionsViewController: UIScrollViewDelegate {
     }
 
 }
-
-

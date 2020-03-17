@@ -29,8 +29,8 @@ struct ApiConfig {
     static let baseURL: String = "https://api.myjson.com/bins/"
 
     enum EndPoint: String {
-        case serverA = "1a30k8"
-        case serverB = "197gmy"
+        case serverA = "1a30k8" // endPoint of requirements
+        case serverB = "197gmy" // aditional endPoint with more data to test filter
         
         init(value: String){
             self = EndPoint(rawValue: value) ?? EndPoint.serverA
