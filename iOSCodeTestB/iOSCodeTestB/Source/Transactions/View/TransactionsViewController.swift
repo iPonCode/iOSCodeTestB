@@ -291,6 +291,7 @@ extension TransactionsViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        hideSearchBar()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
