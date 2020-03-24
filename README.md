@@ -1,5 +1,6 @@
 # iOSCodeTestB
 An other iOS code test (Banking)
+![](readme-img/iOSCodeTestB-repository-graph.png)
 
 Changelog:
 
