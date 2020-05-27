@@ -2,7 +2,7 @@
 An other iOS code test (Banking)
 ![](readme-img/iOSCodeTestB-repository-graph.png)
 ___
-> April 2, 2020 update: **The API used in this proyect is down**, "Consultando transactiones…" and "Espere, leyendo contenido…" are the espected feedback on launch App since this date. [myjson has officially been shut down today](https://twitter.com/lance_ramoth/status/1245515531710390272?s=20). Please, let my know your interest to use an alternative API if you want watch the list in action! in the meantime, please [check it out my other Swift / SwiftUI public repositories](https://github.com/ssuperw?tab=repositories)
+> April 2, 2020 update: **The API used in this proyect is down**, "Consultando transactiones…" and "Espere, leyendo contenido…" are the expected feedback on launch App since this date. [myjson has officially been shut down today](https://twitter.com/lance_ramoth/status/1245515531710390272?s=20). Please, let my know your interest to use an alternative API if you want watch the list in action! in the meantime, please [check it out my other Swift / SwiftUI public repositories](https://github.com/ssuperw?tab=repositories)
 ___
 Changelog:
 

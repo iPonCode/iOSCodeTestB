@@ -36,13 +36,13 @@ class iOSCodeTestBTests: XCTestCase {
         
         // Given
         let endPointGetted : ApiConfig.EndPoint
-        let espectedEndPointServerA: ApiConfig.EndPoint = .serverA
+        let expectedEndPointServerA: ApiConfig.EndPoint = .serverA
         
         // When
         endPointGetted = viewModel.getCurrentEndPoint()
         
         // Then
-        XCTAssertEqual(endPointGetted, espectedEndPointServerA)
+        XCTAssertEqual(endPointGetted, expectedEndPointServerA)
     }
 
 }
