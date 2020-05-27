@@ -10,24 +10,39 @@ import XCTest
 
 class iOSCodeTestBTests: XCTestCase {
 
+    private var viewModel : TransactionsViewModelImpl!
+
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        viewModel = TransactionsViewModelImpl()
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        viewModel = nil
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSetCurrentEndPoint() {
+        
+        // Given
+        let endPointSettedToServerB : ApiConfig.EndPoint = .serverB
+        
+        // When
+        viewModel.setCurrentEndPoint(endPointSettedToServerB)
+        
+        // Then
+        XCTAssertEqual(viewModel.getCurrentEndPoint(), endPointSettedToServerB)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testGetCurrentEndPoint() {
+        
+        // Given
+        let endPointGetted : ApiConfig.EndPoint
+        let espectedEndPointServerA: ApiConfig.EndPoint = .serverA
+        
+        // When
+        endPointGetted = viewModel.getCurrentEndPoint()
+        
+        // Then
+        XCTAssertEqual(endPointGetted, espectedEndPointServerA)
     }
 
 }

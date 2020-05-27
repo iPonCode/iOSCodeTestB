@@ -6,6 +6,9 @@ ___
 ___
 Changelog:
 
+1.0.3
+- [ * ] Testing: add some little unit tests
+
 1.0.2
  - [ √ ] Hotfix:  remove duplicates
  - [ * ] Visual:  redesign cells
