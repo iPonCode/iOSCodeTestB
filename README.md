@@ -10,7 +10,7 @@ ___
 > update from Nov 2023
 ## Continue by check out this other repositories
  - my other Swift / SwiftUI [public repositories](https://github.com/iPonCode?tab=repositories) and
-  - my some others **real world** code test repository index](https://github.com/iPonCode/swift-code-test)
+  - my some others **real world** code test [repository index](https://github.com/iPonCode/swift-code-test)
 
 Thank you ,-)
 ___
